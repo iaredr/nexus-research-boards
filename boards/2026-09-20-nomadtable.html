@@ -3,212 +3,355 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nomadtable · 调研看板</title>
+<title>Nomadtable · Jay Raavi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  :root, [data-theme="light"]{
-    --bg:#eef1f4;
-    --bg2:#e3e8ee;
-    --card:#fffdf8;
-    --ink:#182033;
-    --muted:#667085;
-    --line:#c8d0db;
-    --accent:#0f766e;
-    --accent-2:#2563eb;
-    --warn:#b45309;
-    --danger:#b91c1c;
-    --ok:#047857;
-    --chip:#f3f4f6;
-    --shadow:0 12px 40px rgba(24,32,51,.08);
-    --glow:rgba(15,118,110,.12);
+  :root, [data-theme="light"] {
+    --bg: #f2f4f7;
+    --ink: #1a1f2e;
+    --mute: #5c6578;
+    --rule: #d0d5de;
+    --mark: #b85a2a;
+    --sea: #2a5f6f;
+    --ok: #1f6b4a;
+    --bad: #a33a32;
+    --panel: #ffffff;
+    --focus: #2a5f6f;
   }
-  [data-theme="dark"]{
-    --bg:#0b1220;
-    --bg2:#0e1626;
-    --card:#121a2b;
-    --ink:#e8eef8;
-    --muted:#93a4bf;
-    --line:#243049;
-    --accent:#3dd6c6;
-    --accent-2:#6ea8ff;
-    --warn:#f5b942;
-    --danger:#ff6b7a;
-    --ok:#6ee7a8;
-    --chip:#1b2740;
-    --shadow:0 12px 40px rgba(0,0,0,.35);
-    --glow:rgba(61,214,198,.12);
+  [data-theme="dark"] {
+    --bg: #12151c;
+    --ink: #ece8e1;
+    --mute: #9aa3b5;
+    --rule: #2c3344;
+    --mark: #e08a4a;
+    --sea: #7eb8c4;
+    --ok: #7dcca3;
+    --bad: #f0a09a;
+    --panel: #1a1f2a;
+    --focus: #7eb8c4;
   }
-  *{box-sizing:border-box}
-  html{color-scheme:light dark}
-  body{
-    margin:0;
-    font-family:"Source Sans 3",system-ui,sans-serif;
-    color:var(--ink);
-    background:
-      radial-gradient(1000px 480px at 12% -8%, var(--glow), transparent 55%),
-      linear-gradient(180deg, var(--bg), var(--bg2));
-    line-height:1.55;
-    min-height:100vh;
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Literata, Georgia, "Times New Roman", serif;
+    font-optical-sizing: auto;
+    font-size: 1.0625rem;
+    line-height: 1.65;
   }
-  .wrap{max-width:980px;margin:0 auto;padding:20px 16px 48px}
-  .topbar{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    margin-bottom:14px;flex-wrap:wrap;
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
   }
-  .eyebrow{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+
+  .page {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
   }
-  .theme-btn{
-    appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
-    border-radius:999px;padding:.4rem .85rem;font:inherit;font-size:.85rem;cursor:pointer;
-    box-shadow:var(--shadow);
+
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+    font-family: Sora, system-ui, sans-serif;
+    font-size: 0.8125rem;
+    color: var(--mute);
   }
-  .theme-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  h1{font-size:clamp(1.55rem,3.5vw,2rem);margin:0 0 .4rem;letter-spacing:-.02em}
-  .sub{color:var(--muted);margin:0 0 1rem}
-  .grid{display:grid;gap:12px}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  .g2{grid-template-columns:1fr 1fr}
-  .g3{grid-template-columns:1fr 1fr 1fr}
-  @media(max-width:800px){.g4,.g3{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
-  @media(max-width:520px){.g4,.g3,.g2{grid-template-columns:1fr}}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:14px 14px 12px;box-shadow:var(--shadow);
+  .theme {
+    font: inherit;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 0.35rem;
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
   }
-  .kpi{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;font-family:"IBM Plex Mono",monospace}
-  .kpi small{display:block;font-size:.72rem;font-weight:500;color:var(--muted);margin-top:.25rem;font-family:"Source Sans 3",sans-serif}
-  .tag{
-    display:inline-block;font-size:.7rem;padding:.15rem .5rem;border-radius:999px;
-    border:1px solid var(--line);color:var(--muted);margin:0 .25rem .35rem 0;background:var(--chip);
+  .theme:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
   }
-  .tag.self{color:var(--warn);border-color:color-mix(in srgb, var(--warn) 35%, var(--line))}
-  .tag.ok{color:var(--ok);border-color:color-mix(in srgb, var(--ok) 35%, var(--line))}
-  .tag.soft{color:var(--accent-2);border-color:color-mix(in srgb, var(--accent-2) 35%, var(--line))}
-  h2{font-size:1.02rem;margin:0 0 .55rem}
-  .pill{font-weight:600;color:var(--accent)}
-  .bar{height:10px;background:var(--chip);border-radius:999px;overflow:hidden;margin:.4rem 0 .15rem}
-  .bar>i{display:block;height:100%;border-radius:999px;background:var(--accent)}
-  .bar>i.b2{background:var(--accent-2)}
-  .bar>i.warn{background:var(--warn)}
-  .row{display:flex;justify-content:space-between;gap:8px;font-size:.82rem;color:var(--muted)}
-  .list{margin:0;padding-left:1.1rem}
-  .list li{margin:.35rem 0}
-  .tl{position:relative;padding-left:14px;margin:0}
-  .tl:before{content:"";position:absolute;left:3px;top:4px;bottom:4px;width:2px;background:var(--line)}
-  .tl .item{position:relative;margin:0 0 .7rem;list-style:none}
-  .tl .item:before{
-    content:"";position:absolute;left:-13px;top:.45rem;width:8px;height:8px;border-radius:50%;
-    background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+
+  h1 {
+    font-family: Sora, system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.85rem, 5vw, 2.35rem);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
   }
-  .foot{margin-top:16px;font-size:.78rem;color:var(--muted)}
-  .foot a{color:var(--accent-2)}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .lede {
+    margin: 0 0 1.75rem;
+    color: var(--mute);
+    font-size: 1.05rem;
+    max-width: 36rem;
+  }
+
+  .thesis {
+    margin: 0 0 2.25rem;
+    padding: 0 0 0 1rem;
+    border-left: 3px solid var(--sea);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  h2 {
+    font-family: Sora, system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 2.4rem 0 0.85rem;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 0.9rem; }
+  p.note { color: var(--mute); font-size: 0.95rem; }
+
+  .ledger {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin: 0.5rem 0 0.25rem;
+  }
+  .ledger th,
+  .ledger td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.65rem 0.5rem 0.65rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ledger th {
+    font-family: Sora, system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 0.78rem;
+    color: var(--mute);
+  }
+  .ledger td.fig {
+    font-family: Sora, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
+  .src {
+    display: inline-block;
+    margin-top: 0.2rem;
+    font-family: Sora, system-ui, sans-serif;
+    font-size: 0.72rem;
+    color: var(--mark);
+  }
+  .src.ok { color: var(--ok); }
+
+  .why p { margin-bottom: 1.1rem; }
+  .why strong {
+    font-family: Sora, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .product {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 1rem 1.1rem;
+    margin: 0.75rem 0 0;
+    border-radius: 2px;
+  }
+  .product ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .product li { margin: 0.3rem 0; }
+
+  .journey {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .journey li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (max-width: 520px) {
+    .journey li { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+  .journey time {
+    font-family: Sora, system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--mute);
+    padding-top: 0.15rem;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 620px) {
+    .split { grid-template-columns: 1fr; }
+  }
+  .split h3 {
+    font-family: Sora, system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .split ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  .split li { margin: 0.35rem 0; color: var(--mute); }
+  .split li strong { color: var(--ink); font-weight: 600; }
+
+  .risks {
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  .risks li { margin: 0.45rem 0; }
+  .risks .hot { color: var(--bad); }
+
+  .take ol {
+    margin: 0.4rem 0 0;
+    padding-left: 1.25rem;
+  }
+  .take li { margin: 0.5rem 0; padding-left: 0.15rem; }
+
+  footer {
+    margin-top: 2.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: Sora, system-ui, sans-serif;
+    font-size: 0.78rem;
+    color: var(--mute);
+  }
+  footer a { color: var(--sea); }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="eyebrow">Nexus research · 2026-09-20</div>
-      <button type="button" class="theme-btn" id="themeToggle" aria-label="切换浅色或暗色">切换主题</button>
+  <div class="page">
+    <div class="bar">
+      <span>2026-09-20 · 出海案例扫读</span>
+      <button type="button" class="theme" id="themeToggle">切换到浅色</button>
     </div>
 
-    <span class="tag soft">调研看板</span>
-    <span class="tag self">数字多为自报</span>
-    <h1>Nomadtable · Jay Raavi</h1>
-    <p class="sub">独行旅客线下约局 App · 前 Amazon SDE · 一人全栈</p>
+    <h1>Nomadtable</h1>
+    <p class="lede">前 Amazon 工程师 Jay Raavi 做的独行旅客约局 App：今晚在陌生城市找人吃饭，不是交友大盘，也不是约会软件。</p>
 
-    <div class="grid g4" style="margin-bottom:12px">
-      <div class="card"><div class="kpi">~$140K<small>MRR · Starter Story 口径 · 自报</small></div></div>
-      <div class="card"><div class="kpi">1.8–2M<small>用户/下载混用 · 自报冲突</small></div></div>
-      <div class="card"><div class="kpi">$8.99–$89.99<small>Plus 订阅 · 美区商店可核</small></div></div>
-      <div class="card"><div class="kpi">~18 mo<small>2025-03 上线量级 → 六位数月收入</small></div></div>
-    </div>
+    <p class="thesis">可带走的不是「月入十四万」故事，而是极窄场景、本人即用户、短视频飞轮、早期就收费。公开数字当方向信号，不当财报。</p>
 
-    <div class="grid g2" style="margin-bottom:12px">
-      <div class="card">
-        <h2>一句话</h2>
-        <p>把「今晚在陌生城市找饭搭子」做成极窄 freemium 社交；<span class="pill">场景 sharpness × 本人即用户 × 短视频飞轮 × 早期收费</span>。公开数字当方向信号，不当财报。</p>
-      </div>
-      <div class="card">
-        <h2>产品是什么</h2>
-        <ul class="list">
-          <li>Plans-first meetup（非约会）</li>
-          <li>iOS / Android / nomadtable.app</li>
-          <li>RN + Firebase · 仍接近一人公司</li>
-          <li>Trip Pass 对齐「一趟旅行」周期</li>
-        </ul>
-      </div>
-    </div>
+    <h2>有争议的规模数字</h2>
+    <p class="note">同一时期 users / downloads / MAU、MRR / ARR / run rate 混用；冲突处保留，不抹平。</p>
+    <table class="ledger">
+      <thead>
+        <tr><th>数字</th><th>含义与来源</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fig">~$140K</td>
+          <td>月经常性收入量级（约 2026-09 访谈口径）<span class="src">自报 / 转述</span></td>
+        </tr>
+        <tr>
+          <td class="fig">1.8–2M</td>
+          <td>用户或下载，不同帖口径打架<span class="src">自报冲突</span></td>
+        </tr>
+        <tr>
+          <td class="fig">$8.99+</td>
+          <td>Plus 周订起价（美区 App Store）<span class="src ok">商店可核</span></td>
+        </tr>
+        <tr>
+          <td class="fig">~18 个月</td>
+          <td>约 2025-03 上线后冲到六位数月收入量级<span class="src">时间线自报</span></td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="grid g3" style="margin-bottom:12px">
-      <div class="card">
-        <h2>成功原因权重（判断）</h2>
-        <div class="row"><span>极窄即时场景</span><span>高</span></div><div class="bar"><i style="width:92%"></i></div>
-        <div class="row"><span>Founder = 用户</span><span>高</span></div><div class="bar"><i style="width:88%"></i></div>
-        <div class="row"><span>短视频 / UGC 飞轮</span><span>高</span></div><div class="bar"><i class="b2" style="width:85%"></i></div>
-        <div class="row"><span>早期收费</span><span>中高</span></div><div class="bar"><i class="b2" style="width:72%"></i></div>
-        <div class="row"><span>履历安全垫</span><span>中</span></div><div class="bar"><i class="warn" style="width:55%"></i></div>
-      </div>
-      <div class="card">
-        <h2>可复制</h2>
-        <ul class="list">
-          <li>窄场景 + 活动优先</li>
-          <li>上线前广告/访谈验证</li>
-          <li>短周期订阅对齐行为</li>
-          <li>住在用户密度城市 dogfood</li>
-        </ul>
-        <h2 style="margin-top:1rem">难复制</h2>
-        <ul class="list">
-          <li>Amazon 心理/财务兜底</li>
-          <li>会拍会招创作者的复合能力</li>
-          <li>已形成城市密度与时间窗口</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>风险</h2>
-        <ul class="list">
-          <li style="color:var(--danger)">被当约会 App · 审核债</li>
-          <li style="color:var(--warn)">一人扛百万用户 · 客服/性能</li>
-          <li style="color:var(--warn)">付费墙 vs 社区感</li>
-          <li>公开数字口径漂移</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card" style="margin-bottom:12px">
-      <h2>时间线（自报为主）</h2>
-      <ul class="tl">
-        <li class="item"><b>2024 夏</b> · Bergen 独旅起意 → 离职 Amazon</li>
-        <li class="item"><b>~2025-03</b> · 上线 · 首日 3k+ signups（自报）</li>
-        <li class="item"><b>2025-06</b> · 3 个月 70K / $10K MRR</li>
-        <li class="item"><b>2026-01</b> · ~1M downloads · 首个 $100k+ 月 · 居 Bangkok</li>
-        <li class="item"><b>2026-07</b> · 宣称 2M users / $2M ARR</li>
-        <li class="item"><b>~2026-09</b> · 访谈口径 1.8M / $140K MRR · 数字与前期有冲突</li>
+    <h2>产品长什么样</h2>
+    <div class="product">
+      <p>Plans first, chat second。先看到或创建附近活动（吃饭、sightseeing、咖啡），再聊天成行；也有行程重叠进群、AI 场地建议。</p>
+      <ul>
+        <li>平台：iOS / Android / nomadtable.app · 约 4.7★ / 2.1 万评分（调研时点）</li>
+        <li>栈：React Native + Firebase · 长期接近一人公司</li>
+        <li>变现：免费 + Plus / Trip Pass（短周期对齐「一趟旅行」）</li>
       </ul>
     </div>
 
-    <div class="grid g2">
-      <div class="card">
-        <h2>对你（出海/独立产品）</h2>
-        <ol class="list">
-          <li>先找「地理可聚集 + 当场能完成」的痛点</li>
-          <li>增长默认按内容系统设计</li>
-          <li>公开数字只当方向，做事用可核验指标</li>
-        </ol>
+    <h2>为什么成立</h2>
+    <div class="why">
+      <p><strong>极窄、当场能完成。</strong>痛点是今晚出门，不是「交个朋友」。相对 Bumble BFF / Meetup，转化路径更短。</p>
+      <p><strong>Founder 就是用户。</strong>想法来自独旅挫败；长居用户密度城市（Tallinn → Bangkok）自己用、自己拍内容。</p>
+      <p><strong>内容即增长。</strong>自报数亿短视频曝光；本人先跑通再按效果雇创作者。社交难靠买量硬推。</p>
+      <p><strong>早期就收费。</strong>旅行场景付费意愿相对清晰；上线前做过广告与访谈验证，多轮 MVP。</p>
+    </div>
+
+    <h2>时间线</h2>
+    <ol class="journey">
+      <li><time>2024 夏</time><span>Bergen 独旅起意，随后离职 Amazon</span></li>
+      <li><time>~2025-03</time><span>正式上线；首日宣称三千以上注册（自报）</span></li>
+      <li><time>2025-06</time><span>约三个月：7 万用户 / 1 万美元 MRR（自报）</span></li>
+      <li><time>2026-01</time><span>约百万下载、首个十万美金以上月收入；人在 Bangkok</span></li>
+      <li><time>2026-07</time><span>宣称两百万用户 / 两百万 ARR</span></li>
+      <li><time>~2026-09</time><span>访谈口径约 180 万用户 / 14 万美元 MRR，与前期数字冲突</span></li>
+    </ol>
+
+    <h2>可复制与难复制</h2>
+    <div class="split">
+      <div>
+        <h3>相对可复制</h3>
+        <ul>
+          <li>窄场景 + 活动优先</li>
+          <li>上线前广告 / 访谈验证</li>
+          <li>短周期订阅对齐行为</li>
+          <li>住在用户密度城市 dogfood</li>
+        </ul>
       </div>
-      <div class="card">
-        <h2>核验状态</h2>
-        <p><span class="tag ok">可核</span> 商店定价 / 产品定位 / 平台存在</p>
-        <p><span class="tag self">自报</span> 用户数 · MRR/ARR · 播放量 · 创作者规模</p>
-        <p><span class="tag">缺口</span> Sensor Tower 估测 · 流水审计 · MAU 定义</p>
+      <div>
+        <h3>很难复制</h3>
+        <ul>
+          <li>大厂履历的心理与财务安全垫</li>
+          <li>会拍、会写、会招创作者的复合能力</li>
+          <li>已形成的城市密度与时间窗口</li>
+        </ul>
       </div>
     </div>
-    <p class="foot">来源见 Notion Memo · <a href="https://github.com/iaredr/nexus-research-boards">源码仓</a></p>
+
+    <div class="risks">
+      <h2>风险</h2>
+      <ul>
+        <li class="hot">被当约会 App：商店评论反复出现 hookup；ToS 与 women-only 是补丁不是根治</li>
+        <li>一人扛百万用户：性能、客服、审核债会堆</li>
+        <li>数字口径漂移：模仿者容易高估付费率、低估审核成本</li>
+      </ul>
+    </div>
+
+    <h2>对你可带走的</h2>
+    <div class="take">
+      <ol>
+        <li>先找「地理可聚集、当场能完成」的痛点，而不是先找全球市场上限。</li>
+        <li>社交增长默认按内容系统设计，而不是按买量预算设计。</li>
+        <li>公开数字只当方向；自己做事用付费转化、次日留存、同城供需比。</li>
+      </ol>
+    </div>
+
+    <footer>
+      完整来源与冲突口径见 Notion Memo。
+      <a href="https://www.nomadtable.app/">nomadtable.app</a>
+      ·
+      <a href="https://github.com/iaredr/nexus-research-boards">源码仓</a>
+    </footer>
   </div>
+
   <script>
   (function () {
     var KEY = "nexus-board-theme";
@@ -223,13 +366,11 @@
     function apply(theme) {
       root.setAttribute("data-theme", theme);
       btn.textContent = theme === "dark" ? "切换到浅色" : "切换到暗色";
-      btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     }
 
     var saved = null;
     try { saved = localStorage.getItem(KEY); } catch (e) {}
-    var theme = (saved === "light" || saved === "dark") ? saved : hourDefault();
-    apply(theme);
+    apply((saved === "light" || saved === "dark") ? saved : hourDefault());
 
     btn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
