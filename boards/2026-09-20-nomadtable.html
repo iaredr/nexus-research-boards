@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nomadtable / Jay Raavi · 调研看板</title>
+<style>
+:root{--bg:#0b1220;--card:#121a2b;--line:#243049;--ink:#e8eef8;--muted:#93a4bf;--accent:#3dd6c6;--warn:#f5b942;--danger:#ff6b7a;--ok:#6ee7a8;--blue:#6ea8ff}
+*{box-sizing:border-box}body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(1200px 600px at 10% -10%,#1a2744,transparent),var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.45rem;margin:0 0 .35rem}h2{font-size:1.05rem;margin:0 0 .6rem;color:#c9d7ef}.sub{color:var(--muted);font-size:.9rem;margin:0 0 1.1rem}
+.grid{display:grid;gap:12px}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:800px){.g4,.g3,.g2{grid-template-columns:1fr 1fr}.g4 .span2{grid-column:1/-1}}
+@media(max-width:520px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,#152036,#101826);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.kpi{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}.kpi small{display:block;font-size:.72rem;font-weight:500;color:var(--muted);margin-top:.2rem}
+.tag{display:inline-block;font-size:.7rem;padding:.15rem .45rem;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-right:.25rem}
+.tag.self{color:var(--warn);border-color:#6a5220;background:#2a210f}.tag.ok{color:var(--ok);border-color:#275740;background:#10261c}.tag.soft{color:var(--blue);border-color:#2a4570;background:#121f33}
+.bar{height:10px;background:#1b2740;border-radius:999px;overflow:hidden;margin:.45rem 0 .2rem}.bar>i{display:block;height:100%;border-radius:999px}
+.row{display:flex;justify-content:space-between;gap:8px;font-size:.82rem;color:var(--muted)}.list{margin:0;padding-left:1.1rem}.list li{margin:.35rem 0}
+.tl{position:relative;padding-left:14px}.tl:before{content:"";position:absolute;left:3px;top:4px;bottom:4px;width:2px;background:#2a3b5c}
+.tl .item{position:relative;margin:0 0 .7rem}.tl .item:before{content:"";position:absolute;left:-13px;top:.45rem;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px #16353a}
+.foot{margin-top:14px;font-size:.78rem;color:var(--muted)}
+.pill{font-weight:600;color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tag soft">调研看板</div>
+  <div class="tag self">数字多为自报</div>
+  <h1>Nomadtable · Jay Raavi</h1>
+  <p class="sub">独行旅客线下约局 App · 前 Amazon SDE · 一人全栈 · 调研日 2026-09-20</p>
+
+  <div class="grid g4" style="margin-bottom:12px">
+    <div class="card"><div class="kpi">~$140K<small>MRR · Starter Story 口径 · 自报</small></div></div>
+    <div class="card"><div class="kpi">1.8–2M<small>用户/下载混用 · 自报冲突</small></div></div>
+    <div class="card"><div class="kpi">$8.99–$89.99<small>Plus 订阅 · 美区商店可核</small></div></div>
+    <div class="card"><div class="kpi">~18 mo<small>2025-03 上线量级 → 六位数月收入</small></div></div>
+  </div>
+
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="card">
+      <h2>一句话</h2>
+      <p>把「今晚在陌生城市找饭搭子」做成极窄 freemium 社交；<span class="pill">场景 sharpness × 本人即用户 × 短视频飞轮 × 早期收费</span>。公开数字当方向信号，不当财报。</p>
+    </div>
+    <div class="card">
+      <h2>产品是什么</h2>
+      <ul class="list">
+        <li>Plans-first meetup（非约会）</li>
+        <li>iOS / Android / nomadtable.app</li>
+        <li>RN + Firebase · 仍接近一人公司</li>
+        <li>Trip Pass 对齐「一趟旅行」周期</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid g3" style="margin-bottom:12px">
+    <div class="card">
+      <h2>成功原因权重（判断）</h2>
+      <div class="row"><span>极窄即时场景</span><span>高</span></div><div class="bar"><i style="width:92%;background:var(--accent)"></i></div>
+      <div class="row"><span>Founder = 用户</span><span>高</span></div><div class="bar"><i style="width:88%;background:var(--accent)"></i></div>
+      <div class="row"><span>短视频 / UGC 飞轮</span><span>高</span></div><div class="bar"><i style="width:85%;background:var(--blue)"></i></div>
+      <div class="row"><span>早期收费</span><span>中高</span></div><div class="bar"><i style="width:72%;background:var(--blue)"></i></div>
+      <div class="row"><span>履历安全垫</span><span>中</span></div><div class="bar"><i style="width:55%;background:var(--warn)"></i></div>
+    </div>
+    <div class="card">
+      <h2>可复制</h2>
+      <ul class="list">
+        <li>窄场景 + 活动优先</li>
+        <li>上线前广告/访谈验证</li>
+        <li>短周期订阅对齐行为</li>
+        <li>住在用户密度城市 dogfood</li>
+      </ul>
+      <h2 style="margin-top:1rem">难复制</h2>
+      <ul class="list">
+        <li>Amazon 心理/财务兜底</li>
+        <li>会拍会招创作者的复合能力</li>
+        <li>已形成城市密度与时间窗口</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>风险</h2>
+      <ul class="list">
+        <li style="color:var(--danger)">被当约会 App · 审核债</li>
+        <li style="color:var(--warn)">一人扛百万用户 · 客服/性能</li>
+        <li style="color:var(--warn)">付费墙 vs 社区感</li>
+        <li>公开数字口径漂移</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h2>时间线（自报为主）</h2>
+    <div class="tl">
+      <div class="item"><b>2024 夏</b> · Bergen 独旅起意 → 离职 Amazon</div>
+      <div class="item"><b>~2025-03</b> · 上线 · 首日 3k+ signups（自报）</div>
+      <div class="item"><b>2025-06</b> · 3 个月 70K / $10K MRR</div>
+      <div class="item"><b>2026-01</b> · ~1M downloads · 首个 $100k+ 月 · 居 Bangkok</div>
+      <div class="item"><b>2026-07</b> · 宣称 2M users / $2M ARR</div>
+      <div class="item"><b>~2026-09</b> · 访谈口径 1.8M / $140K MRR · 数字与前期有冲突</div>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h2>对你（出海/独立产品）</h2>
+      <ol class="list">
+        <li>先找「地理可聚集 + 当场能完成」的痛点</li>
+        <li>增长默认按内容系统设计</li>
+        <li>公开数字只当方向，做事用可核验指标</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>核验状态</h2>
+      <p><span class="tag ok">可核</span> 商店定价 / 产品定位 / 平台存在</p>
+      <p><span class="tag self">自报</span> 用户数 · MRR/ARR · 播放量 · 创作者规模</p>
+      <p><span class="tag">缺口</span> Sensor Tower 估测 · 流水审计 · MAU 定义</p>
+    </div>
+  </div>
+  <p class="foot">来源见 Memo 正文链接列表 · HTML 看板仅供扫读，不替代原始出处</p>
+</div>
+</body>
+</html>
