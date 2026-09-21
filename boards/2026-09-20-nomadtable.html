@@ -4,237 +4,122 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Nomadtable · Jay Raavi</title>
+<meta name="description" content="Plans first, chat second。先看到或创建附近活动（吃饭、sightseeing、咖啡），再聊天成行；也有行程重叠进群、AI 场地建议。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://iaredr.github.io/nexus-research-boards/boards/2026-09-20-nomadtable.html"/>
+<meta property="og:title" content="Nomadtable · Jay Raavi"/>
+<meta property="og:description" content="Plans first, chat second。先看到或创建附近活动（吃饭、sightseeing、咖啡），再聊天成行；也有行程重叠进群、AI 场地建议。"/>
+<meta property="og:image" content="https://iaredr.github.io/nexus-research-boards/boards/assets/2026-09-20-nomadtable/og-image.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Nomadtable · Jay Raavi"/>
+<meta name="twitter:description" content="Plans first, chat second。先看到或创建附近活动（吃饭、sightseeing、咖啡），再聊天成行；也有行程重叠进群、AI 场地建议。"/>
+<meta name="twitter:image" content="https://iaredr.github.io/nexus-research-boards/boards/assets/2026-09-20-nomadtable/og-image.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
   :root, [data-theme="light"] {
-    --bg: #f2f4f7;
-    --ink: #1a1f2e;
-    --mute: #5c6578;
-    --rule: #d0d5de;
-    --mark: #b85a2a;
-    --sea: #2a5f6f;
-    --ok: #1f6b4a;
-    --bad: #a33a32;
-    --panel: #ffffff;
-    --focus: #2a5f6f;
+    --bg: #f2f4f7; --ink: #1a1f2e; --mute: #5c6578; --rule: #d0d5de;
+    --mark: #b85a2a; --sea: #2a5f6f; --ok: #1f6b4a; --bad: #a33a32;
+    --panel: #ffffff; --focus: #2a5f6f;
   }
   [data-theme="dark"] {
-    --bg: #12151c;
-    --ink: #ece8e1;
-    --mute: #9aa3b5;
-    --rule: #2c3344;
-    --mark: #e08a4a;
-    --sea: #7eb8c4;
-    --ok: #7dcca3;
-    --bad: #f0a09a;
-    --panel: #1a1f2a;
-    --focus: #7eb8c4;
+    --bg: #12151c; --ink: #ece8e1; --mute: #9aa3b5; --rule: #2c3344;
+    --mark: #e08a4a; --sea: #7eb8c4; --ok: #7dcca3; --bad: #f0a09a;
+    --panel: #1a1f2a; --focus: #7eb8c4;
   }
-
   * { box-sizing: border-box; }
   html { color-scheme: light dark; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: Literata, Georgia, "Times New Roman", serif;
-    font-optical-sizing: auto;
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Literata, Georgia, serif; font-size: 1.0625rem; line-height: 1.65;
   }
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
-  }
-
-  .page {
-    max-width: 40rem;
-    margin: 0 auto;
-    padding: 1.5rem 1.25rem 4rem;
-  }
-
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  .page { max-width: 40rem; margin: 0 auto; padding: 1.25rem 1.25rem 4rem; }
   .bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.25rem;
-    font-family: Sora, system-ui, sans-serif;
-    font-size: 0.8125rem;
-    color: var(--mute);
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    margin-bottom: 1.25rem; font-family: Sora, system-ui, sans-serif; font-size: 0.8125rem; color: var(--mute);
   }
   .theme {
-    font: inherit;
-    color: var(--ink);
-    background: transparent;
-    border: 1px solid var(--rule);
-    border-radius: 0.35rem;
-    padding: 0.35rem 0.7rem;
-    cursor: pointer;
+    font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--rule);
+    border-radius: 0.35rem; padding: 0.35rem 0.7rem; cursor: pointer;
   }
-  .theme:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
+  .theme:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .hero {
+    display: block; width: 100%; height: auto; border-radius: 2px;
+    margin: 0 0 1.5rem; border: 1px solid var(--rule);
   }
-
   h1 {
-    font-family: Sora, system-ui, sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.85rem, 5vw, 2.35rem);
-    letter-spacing: -0.03em;
-    line-height: 1.15;
+    font-family: Sora, system-ui, sans-serif; font-weight: 700;
+    font-size: clamp(1.85rem, 5vw, 2.35rem); letter-spacing: -0.03em; line-height: 1.15;
     margin: 0 0 0.5rem;
   }
-  .lede {
-    margin: 0 0 1.75rem;
-    color: var(--mute);
-    font-size: 1.05rem;
-    max-width: 36rem;
-  }
-
+  .lede { margin: 0 0 1.5rem; color: var(--mute); font-size: 1.05rem; max-width: 36rem; }
   .thesis {
-    margin: 0 0 2.25rem;
-    padding: 0 0 0 1rem;
-    border-left: 3px solid var(--sea);
-    font-size: 1.15rem;
-    font-weight: 500;
-    line-height: 1.45;
+    margin: 0 0 2rem; padding: 0 0 0 1rem; border-left: 3px solid var(--sea);
+    font-size: 1.15rem; font-weight: 500; line-height: 1.45;
   }
-
   h2 {
-    font-family: Sora, system-ui, sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin: 2.4rem 0 0.85rem;
-    color: var(--ink);
+    font-family: Sora, system-ui, sans-serif; font-size: 0.95rem; font-weight: 600;
+    letter-spacing: -0.01em; margin: 2.2rem 0 0.85rem;
   }
-
   p { margin: 0 0 0.9rem; }
   p.note { color: var(--mute); font-size: 0.95rem; }
-
-  .ledger {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-    margin: 0.5rem 0 0.25rem;
+  .shot {
+    display: block; width: 100%; height: auto; margin: 0.75rem 0 1rem;
+    border: 1px solid var(--rule); border-radius: 2px;
   }
-  .ledger th,
-  .ledger td {
-    text-align: left;
-    vertical-align: top;
-    padding: 0.65rem 0.5rem 0.65rem 0;
+  .ledger { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 0.5rem 0; }
+  .ledger th, .ledger td {
+    text-align: left; vertical-align: top; padding: 0.65rem 0.5rem 0.65rem 0;
     border-bottom: 1px solid var(--rule);
   }
   .ledger th {
-    font-family: Sora, system-ui, sans-serif;
-    font-weight: 500;
-    font-size: 0.78rem;
-    color: var(--mute);
+    font-family: Sora, system-ui, sans-serif; font-weight: 500; font-size: 0.78rem; color: var(--mute);
   }
   .ledger td.fig {
-    font-family: Sora, system-ui, sans-serif;
-    font-weight: 600;
-    font-size: 1.05rem;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-    padding-right: 1rem;
+    font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: 1.05rem;
+    letter-spacing: -0.02em; white-space: nowrap; padding-right: 1rem;
   }
   .src {
-    display: inline-block;
-    margin-top: 0.2rem;
-    font-family: Sora, system-ui, sans-serif;
-    font-size: 0.72rem;
-    color: var(--mark);
+    display: inline-block; margin-top: 0.2rem; font-family: Sora, system-ui, sans-serif;
+    font-size: 0.72rem; color: var(--mark);
   }
   .src.ok { color: var(--ok); }
-
   .why p { margin-bottom: 1.1rem; }
-  .why strong {
-    font-family: Sora, system-ui, sans-serif;
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
+  .why strong { font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; }
   .product {
-    background: var(--panel);
-    border: 1px solid var(--rule);
-    padding: 1rem 1.1rem;
-    margin: 0.75rem 0 0;
-    border-radius: 2px;
+    background: var(--panel); border: 1px solid var(--rule); padding: 1rem 1.1rem;
+    margin: 0.75rem 0 0; border-radius: 2px;
   }
-  .product ul {
-    margin: 0.4rem 0 0;
-    padding-left: 1.15rem;
-  }
+  .product ul { margin: 0.4rem 0 0; padding-left: 1.15rem; }
   .product li { margin: 0.3rem 0; }
-
-  .journey {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+  .journey { list-style: none; margin: 0; padding: 0; }
   .journey li {
-    display: grid;
-    grid-template-columns: 6.5rem 1fr;
-    gap: 0.75rem;
-    padding: 0.55rem 0;
-    border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem;
+    padding: 0.55rem 0; border-bottom: 1px solid var(--rule);
   }
-  @media (max-width: 520px) {
-    .journey li { grid-template-columns: 1fr; gap: 0.15rem; }
-  }
+  @media (max-width: 520px) { .journey li { grid-template-columns: 1fr; gap: 0.15rem; } }
   .journey time {
-    font-family: Sora, system-ui, sans-serif;
-    font-size: 0.8rem;
-    color: var(--mute);
-    padding-top: 0.15rem;
+    font-family: Sora, system-ui, sans-serif; font-size: 0.8rem; color: var(--mute); padding-top: 0.15rem;
   }
-
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 0.5rem;
-  }
-  @media (max-width: 620px) {
-    .split { grid-template-columns: 1fr; }
-  }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; }
+  @media (max-width: 620px) { .split { grid-template-columns: 1fr; } }
   .split h3 {
-    font-family: Sora, system-ui, sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem;
+    font-family: Sora, system-ui, sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0 0 0.5rem;
   }
-  .split ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
+  .split ul { margin: 0; padding-left: 1.1rem; }
   .split li { margin: 0.35rem 0; color: var(--mute); }
-  .split li strong { color: var(--ink); font-weight: 600; }
-
-  .risks {
-    margin: 1rem 0 0;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule);
-  }
+  .risks { margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--rule); }
   .risks li { margin: 0.45rem 0; }
   .risks .hot { color: var(--bad); }
-
-  .take ol {
-    margin: 0.4rem 0 0;
-    padding-left: 1.25rem;
-  }
-  .take li { margin: 0.5rem 0; padding-left: 0.15rem; }
-
+  .take ol { margin: 0.4rem 0 0; padding-left: 1.25rem; }
+  .take li { margin: 0.5rem 0; }
   footer {
-    margin-top: 2.75rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule);
-    font-family: Sora, system-ui, sans-serif;
-    font-size: 0.78rem;
-    color: var(--mute);
+    margin-top: 2.75rem; padding-top: 1rem; border-top: 1px solid var(--rule);
+    font-family: Sora, system-ui, sans-serif; font-size: 0.78rem; color: var(--mute);
   }
   footer a { color: var(--sea); }
 </style>
@@ -246,34 +131,22 @@
       <button type="button" class="theme" id="themeToggle">切换到浅色</button>
     </div>
 
+    <img class="hero" src="https://iaredr.github.io/nexus-research-boards/boards/assets/2026-09-20-nomadtable/hero.jpg" width="1600" height="900" alt="独行约桌：黄昏街边空位餐桌" fetchpriority="high"/>
+
     <h1>Nomadtable</h1>
     <p class="lede">前 Amazon 工程师 Jay Raavi 做的独行旅客约局 App：今晚在陌生城市找人吃饭，不是交友大盘，也不是约会软件。</p>
-
     <p class="thesis">可带走的不是「月入十四万」故事，而是极窄场景、本人即用户、短视频飞轮、早期就收费。公开数字当方向信号，不当财报。</p>
 
     <h2>有争议的规模数字</h2>
-    <p class="note">同一时期 users / downloads / MAU、MRR / ARR / run rate 混用；冲突处保留，不抹平。</p>
+    <p class="note">同一时期 users / downloads / MAU、MRR / ARR / run rate 混用；冲突处保留。</p>
+    <img class="shot" src="https://iaredr.github.io/nexus-research-boards/boards/assets/2026-09-20-nomadtable/snap-figures.png" width="1200" height="720" alt="关键数字一览截图：约14万美元MRR、180到200万用户、商店可核定价、约18个月"/>
     <table class="ledger">
-      <thead>
-        <tr><th>数字</th><th>含义与来源</th></tr>
-      </thead>
+      <thead><tr><th>数字</th><th>含义与来源</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="fig">~$140K</td>
-          <td>月经常性收入量级（约 2026-09 访谈口径）<span class="src">自报 / 转述</span></td>
-        </tr>
-        <tr>
-          <td class="fig">1.8–2M</td>
-          <td>用户或下载，不同帖口径打架<span class="src">自报冲突</span></td>
-        </tr>
-        <tr>
-          <td class="fig">$8.99+</td>
-          <td>Plus 周订起价（美区 App Store）<span class="src ok">商店可核</span></td>
-        </tr>
-        <tr>
-          <td class="fig">~18 个月</td>
-          <td>约 2025-03 上线后冲到六位数月收入量级<span class="src">时间线自报</span></td>
-        </tr>
+        <tr><td class="fig">~$140K</td><td>月经常性收入量级（约 2026-09 访谈口径）<span class="src">自报 / 转述</span></td></tr>
+        <tr><td class="fig">1.8–2M</td><td>用户或下载，不同帖口径打架<span class="src">自报冲突</span></td></tr>
+        <tr><td class="fig">$8.99+</td><td>Plus 周订起价（美区 App Store）<span class="src ok">商店可核</span></td></tr>
+        <tr><td class="fig">~18 个月</td><td>约 2025-03 上线后冲到六位数月收入量级<span class="src">时间线自报</span></td></tr>
       </tbody>
     </table>
 
@@ -336,6 +209,7 @@
     </div>
 
     <h2>对你可带走的</h2>
+    <img class="shot" src="https://iaredr.github.io/nexus-research-boards/boards/assets/2026-09-20-nomadtable/snap-takeaways.png" width="1200" height="720" alt="三条可带走结论截图"/>
     <div class="take">
       <ol>
         <li>先找「地理可聚集、当场能完成」的痛点，而不是先找全球市场上限。</li>
@@ -351,27 +225,22 @@
       <a href="https://github.com/iaredr/nexus-research-boards">源码仓</a>
     </footer>
   </div>
-
   <script>
   (function () {
     var KEY = "nexus-board-theme";
     var root = document.documentElement;
     var btn = document.getElementById("themeToggle");
-
     function hourDefault() {
       var h = new Date().getHours();
       return (h >= 7 && h < 19) ? "light" : "dark";
     }
-
     function apply(theme) {
       root.setAttribute("data-theme", theme);
       btn.textContent = theme === "dark" ? "切换到浅色" : "切换到暗色";
     }
-
     var saved = null;
     try { saved = localStorage.getItem(KEY); } catch (e) {}
     apply((saved === "light" || saved === "dark") ? saved : hourDefault());
-
     btn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       apply(next);
