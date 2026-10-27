@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pricegraphy · 黄金长尾内容调研</title>
+<meta name="description" content="everyday gold prices：15 条长尾主题库、10 本科普书单、排期行动建议。拆溢价、买什么、怎么比价。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://iaredr.github.io/nexus-research-boards/boards/2026-10-27-pricegraphy-content.html"/>
+<meta property="og:title" content="Pricegraphy · 黄金长尾内容调研"/>
+<meta property="og:description" content="15 条长尾主题 · 书单钩子 · 排期建议。See what the price hides."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root,[data-theme=light]{
+  --bg:#f3eee4;--ink:#1a1712;--mute:#6a6358;--rule:#d4cbb8;
+  --panel:#faf7f0;--panel2:#efe8da;--brass:#8a6d32;--brass-soft:#c4a45a;
+  --mark:#9a3d2e;--ok:#3d6b4f;--focus:#8a6d32;--stamp:#b89a4a33;
+  --shadow:0 1px 0 #0000000a,0 8px 24px #1a17120d;
+}
+[data-theme=dark]{
+  --bg:#12100e;--ink:#ebe4d6;--mute:#9a9286;--rule:#2f2a24;
+  --panel:#1b1814;--panel2:#241f1a;--brass:#c4a45a;--brass-soft:#8a6d32;
+  --mark:#e08a6a;--ok:#7aab8a;--focus:#c4a45a;--stamp:#c4a45a22;
+  --shadow:0 1px 0 #ffffff08,0 10px 28px #00000066;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.55}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;z-index:0;
+  background-image:radial-gradient(var(--rule) 0.6px,transparent 0.7px);
+  background-size:14px 14px;
+}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:1.1rem 1.15rem 4rem}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.35rem;font-size:.78rem;color:var(--mute)}
+.bar-left{display:flex;flex-wrap:wrap;gap:.55rem .9rem;align-items:center}
+.theme{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:.4rem .75rem;cursor:pointer}
+.theme:focus-visible,.chip:focus-visible,details summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.hero{
+  display:grid;grid-template-columns:1.35fr .9fr;gap:1.25rem;align-items:stretch;
+  margin-bottom:1.75rem;
+}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.ticket{
+  background:var(--panel);border:1px solid var(--rule);box-shadow:var(--shadow);
+  padding:1.35rem 1.4rem 1.25rem;position:relative;overflow:hidden;
+}
+.ticket::after{
+  content:"";position:absolute;top:-18px;right:28px;width:64px;height:64px;border-radius:50%;
+  border:2px dashed var(--brass);background:var(--stamp);opacity:.85;
+  transform:rotate(12deg);
+}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--brass);margin:0 0 .55rem;letter-spacing:.02em}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(2.05rem,4.8vw,2.85rem);line-height:1.08;margin:0 0 .55rem;letter-spacing:-.01em;max-width:18ch}
+.lede{margin:0 0 1rem;color:var(--mute);max-width:42ch}
+.thesis{margin:0;padding:.85rem 0 0;border-top:1px solid var(--rule);font-family:"Cormorant Garamond",Georgia,serif;font-size:1.22rem;font-weight:500;line-height:1.35}
+.side-stack{display:grid;gap:.75rem}
+.stat{
+  background:var(--panel2);border:1px solid var(--rule);padding:.9rem 1rem;
+  display:grid;gap:.2rem;
+}
+.stat b{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.85rem;font-weight:600;line-height:1;color:var(--brass)}
+.stat span{font-size:.8rem;color:var(--mute)}
+.quality{
+  background:var(--panel);border:1px solid var(--rule);padding:1rem 1.1rem;margin:0 0 1.6rem;
+}
+.quality h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;margin:0 0 .55rem;font-weight:600}
+.quality ol{margin:0;padding-left:1.15rem}
+.quality li{margin:.35rem 0}
+.filters{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;align-items:center}
+.filters .label{font-size:.78rem;color:var(--mute);margin-right:.2rem}
+.chip{
+  font:inherit;font-size:.78rem;padding:.35rem .7rem;border-radius:999px;cursor:pointer;
+  border:1px solid var(--rule);background:transparent;color:var(--ink);
+}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:1.8rem 0 .8rem}
+.sec-head h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.55rem;margin:0;font-weight:600}
+.sec-head p{margin:0;font-size:.8rem;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.card{
+  background:var(--panel);border:1px solid var(--rule);padding:0;overflow:hidden;
+  display:flex;flex-direction:column;min-height:100%;
+}
+.card[hidden]{display:none!important}
+.card-top{display:flex;justify-content:space-between;gap:.75rem;padding:.85rem 1rem .55rem;border-bottom:1px dashed var(--rule);background:linear-gradient(180deg,var(--panel2),var(--panel))}
+.rank{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.75rem;color:var(--brass)}
+.diff{font-size:.72rem;padding:.15rem .45rem;border:1px solid var(--rule);border-radius:2px;color:var(--mute);white-space:nowrap}
+.diff.low{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,var(--rule))}
+.diff.mid{color:var(--brass)}
+.diff.high{color:var(--mark);border-color:color-mix(in srgb,var(--mark) 40%,var(--rule))}
+.card-body{padding:.85rem 1rem 1rem;display:grid;gap:.55rem;flex:1}
+.card h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.2rem;margin:0;font-weight:600;line-height:1.25}
+.en{margin:0;font-size:.82rem;color:var(--mute);font-style:italic}
+.meta{display:flex;flex-wrap:wrap;gap:.35rem}
+.pill{font-size:.7rem;padding:.18rem .45rem;border-radius:2px;background:var(--panel2);border:1px solid var(--rule);color:var(--mute)}
+.card details{border-top:1px solid var(--rule);padding:.55rem 1rem .85rem;background:var(--panel)}
+.card summary{cursor:pointer;font-size:.82rem;color:var(--brass);list-style:none;font-weight:500}
+.card summary::-webkit-details-marker{display:none}
+.card details[open] summary{margin-bottom:.45rem}
+.detail p,.detail li{font-size:.86rem;margin:.25rem 0}
+.detail ul{margin:.2rem 0 .4rem;padding-left:1.05rem}
+.detail a{color:var(--brass)}
+.books{display:grid;gap:.55rem}
+.book{
+  display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;
+  background:var(--panel);border:1px solid var(--rule);padding:.85rem 1rem;
+}
+.spine{
+  width:2.6rem;min-height:4.2rem;background:linear-gradient(90deg,var(--brass-soft),var(--brass));
+  color:#1a1712;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;
+  font-family:"Cormorant Garamond",Georgia,serif;font-size:.78rem;font-weight:600;
+  letter-spacing:.04em;padding:.35rem 0;display:flex;align-items:center;justify-content:center;
+}
+.book h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.08rem;margin:0 0 .2rem;font-weight:600}
+.book .by{margin:0 0 .45rem;font-size:.8rem;color:var(--mute)}
+.book .hook{margin:0;font-size:.86rem}
+.book a{color:var(--brass);font-size:.78rem}
+.plan{display:grid;gap:.55rem;counter-reset:step}
+.step{
+  counter-increment:step;display:grid;grid-template-columns:auto 1fr;gap:.85rem;
+  background:var(--panel);border:1px solid var(--rule);padding:.85rem 1rem;align-items:start;
+}
+.step::before{
+  content:counter(step,decimal-leading-zero);font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.78rem;color:var(--brass);padding-top:.15rem;
+}
+.step strong{display:block;margin-bottom:.15rem}
+.step span{color:var(--mute);font-size:.86rem}
+.langs{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.35rem}
+.lang{font-size:.78rem;padding:.35rem .65rem;border:1px dashed var(--rule);background:var(--panel2)}
+footer{margin-top:2.4rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.78rem;color:var(--mute)}
+footer a{color:var(--brass)}
+.empty{display:none;padding:1.2rem;border:1px dashed var(--rule);color:var(--mute);text-align:center}
+.empty.show{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="bar-left">
+      <span>2026-10-27 · Pricegraphy</span>
+      <span>nexus-research-boards</span>
+    </div>
+    <button type="button" class="theme" id="themeToggle">切换到浅色</button>
+  </div>
+
+  <header class="hero">
+    <div class="ticket">
+      <p class="eyebrow">ASSAY · CONTENT RESEARCH</p>
+      <h1>See what the price hides</h1>
+      <p class="lede">everyday gold prices — 溢价、买什么、怎么比价。约 21 篇 guides 之后，主攻长尾 + 社媒分发。</p>
+      <p class="thesis">优质文必须拆一张价格标签：spot、premium、税、工费、回购折价至少点出一项数字，并给出可执行比价动作。不荐股，不盯盘。</p>
+    </div>
+    <div class="side-stack">
+      <div class="stat"><b>15</b><span>长尾主题（契合 × 可写性排序）</span></div>
+      <div class="stat"><b>10</b><span>已核验科普书单</span></div>
+      <div class="stat"><b>8</b><span>排期行动建议</span></div>
+    </div>
+  </header>
+
+  <section class="quality" aria-labelledby="q-h">
+    <h2 id="q-h">写任何一篇都对照</h2>
+    <ol>
+      <li>拆价格标签：至少一项真实数字或公式。</li>
+      <li>给比价动作：计算器、三家怎么比、克重怎么核。</li>
+      <li>宏观只解释「为什么贴纸价会动」，不预测点位。</li>
+      <li>语气直白、拆穿：对标按件买/按克卖、Costco 溢价、熔金、IRS collectibles。</li>
+    </ol>
+  </section>
+
+  <div class="sec-head">
+    <h2>长尾主题库</h2>
+    <p id="countLabel">显示 15 / 15</p>
+  </div>
+  <div class="filters" role="group" aria-label="按竞争难度筛选">
+    <span class="label">竞争</span>
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-filter="low" aria-pressed="false">低–中</button>
+    <button type="button" class="chip" data-filter="mid" aria-pressed="false">中</button>
+    <button type="button" class="chip" data-filter="high" aria-pressed="false">高讨论</button>
+    <span class="label" style="margin-left:.4rem">优先</span>
+    <button type="button" class="chip" data-filter="next" aria-pressed="false">下一篇优先</button>
+  </div>
+  <div id="empty" class="empty">没有匹配的主题，换个筛选试试。</div>
+  <div class="grid" id="topicGrid"></div>
+
+  <div class="sec-head">
+    <h2>其他语种机会</h2>
+    <p>点名即可，先测再加产能</p>
+  </div>
+  <div class="langs">
+    <span class="lang">印地 / 泰米尔 · 印度 GST + 工费</span>
+    <span class="lang">简中 · 一口价验算</span>
+    <span class="lang">马来 / 英语 · 新加坡 IPM</span>
+    <span class="lang">西语 · 拉美零售金税长尾（可测）</span>
+  </div>
+
+  <div class="sec-head">
+    <h2>科普书单</h2>
+    <p>偏历史 / 结构 / 入门；跳过荐股炒作</p>
+  </div>
+  <div class="books" id="bookList"></div>
+
+  <div class="sec-head">
+    <h2>排期行动</h2>
+    <p>给 Pricegraphy 直接排</p>
+  </div>
+  <div class="plan" id="planList"></div>
+
+  <footer>
+    一手 WebSearch / WebFetch · 站点 <a href="https://pricegraphy.com/">pricegraphy.com</a> ·
+    <a href="https://github.com/iaredr/nexus-research-boards">源码仓</a>
+  </footer>
+</div>
+<script>
+(function(){
+  var topics=[
+    {id:1,rank:"01",diff:"mid",diffLabel:"中",next:true,title:"小规格金条溢价陷阱",en:"Why tiny gold bars cost more per gram",intent:"比较 → 买多大",tags:["溢价表","工具感"],titles:["Your 1g bar isn’t “cheaper gold”—it’s a packaging fee","花同样钱，1 克条比 1 盎司条多付了多少溢价？"],site:"做 1g / 10g / 1oz / 100g 溢价表，强调固定成本摊薄。",social:"同款金、同日 spot，三张价签并排：「最小的那根溢价最高」。",sources:[{t:"JM Bullion fractional vs 1oz",u:"https://www.jmbullion.com/investing-guide/buying-physical-metals/fractional-gold-vs-one-ounce-gold/"}],q:"fractional gold premium 1g vs 1oz"},
+    {id:2,rank:"02",diff:"low",diffLabel:"中低",next:true,title:"当铺/回收价 vs 熔金价值",en:"What % of melt do pawn shops pay",intent:"信息 → 去哪卖",tags:["导流计算器","卖出折价"],titles:["Melt says $1,500. The counter offered $900. Here’s the gap.","熔金计算器给你的数，不是买家给你的数"],site:"接现有 melt 计算器，加「预期到手区间」。",social:"截图熔值 vs 报价两行数字：差价才是隐藏成本。",sources:[{t:"r/Gold 75% of spot",u:"https://www.reddit.com/r/Gold/comments/1mm3ih7/being_offered_75_of_spot_price_when_trying_to/"},{t:"meltvalue.com",u:"https://meltvalue.com/gold-calculator"}]},
+    {id:3,rank:"03",diff:"low",diffLabel:"低–中",next:false,title:"Gold-filled / plated / solid",en:"Scrap value of three kinds of “gold”",intent:"信息 · 避坑",tags:["公式卡","短视频"],titles:["“Gold-filled” isn’t 14K. Here’s the scrap math.","标签写金，回收按铜：三种「金」的熔值差"],site:"1/20 14K gold-filled ≈ 约 2.9% 纯金 vs 实心 14K 58.3%。",social:"同一克重、三种标记，熔值差几十倍。",sources:[{t:"APMEX gold-filled",u:"https://learn.apmex.com/selling-guide/scrap/can-you-sell-gold-filled-jewelry/"}]},
+    {id:4,rank:"04",diff:"mid",diffLabel:"中",next:false,title:"金衡盎司 vs 厨房盎司",en:"Troy ounce vs regular ounce",intent:"信息 · 工具",tags:["常青工具页"],titles:["Your kitchen scale just overstated your gold by ~10%","1 oz 金不是 28.35 克——差约 2.75 克就差一截钱"],site:"换算器 + 错误用法多估约 9.7% 例题。",social:"两台秤读数并排：oz vs ozt。",sources:[{t:"Royal Mint Module 7",u:"https://www.royalmint.com/invest/investing-in-precious-metals/precious-metals-academy/precious-metals-academy-beginner-course/module-7/"},{t:"NIST conversion PDF",u:"https://www.nist.gov/system/files/documents/2017/05/09/Precious-Metals-Conversion-Information-march2015.pdf"}]},
+    {id:5,rank:"05",diff:"high",diffLabel:"高讨论",next:false,title:"Costco 溢价「会飘」",en:"Costco gold premium after repricing lag",intent:"比较 → 今天买不买",tags:["深化已有","会员返点"],titles:["Costco isn’t always 2% over spot—sometimes the sticker is stale","会员返点算完，还是比 APMEX/JM 便宜吗？"],site:"现金返点后净溢价公式 + 对比在线经销商。",social:"当日 Costco 标价 vs spot 百分比 +「更新滞后」。",sources:[{t:"r/CostcoPM repricing",u:"https://www.reddit.com/r/CostcoPM/comments/1ki2jkj/costcos_gold_repricing_strategy_what_the_data/"}]},
+    {id:6,rank:"06",diff:"mid",diffLabel:"中",next:false,title:"美国卖金税 collectibles 28%",en:"IRS collectibles tax on gold",intent:"信息 → 报税前搞清",tags:["税收连载"],titles:["Stocks cap at 20%. Your gold bar can hit 28%.","持有超一年也不等于普通长期资本利得"],site:"ETF vs 实物、短长期对照表；卖出前三张检查表。",social:"为什么金 ETF 也可能按收藏品征税。",sources:[{t:"IRS Topic 409",u:"https://www.irs.gov/taxtopics/tc409"}]},
+    {id:7,rank:"07",diff:"low",diffLabel:"中低",next:false,title:"英国 Britannia 免 CGT",en:"UK CGT-exempt gold vs bars",intent:"比较 · 买币还是买条",tags:["税收连载","UK"],titles:["In the UK, the coin can be tax-free. The bar usually isn’t.","同是金，Britannia 与 Krugerrand / bar 的税差"],site:"legal tender 规则拆开：免税的是币的法律地位。",social:"「免税的不是金，是 sterling currency 身份」。",sources:[{t:"HMRC CG78305",u:"https://www.gov.uk/hmrc-internal-manuals/capital-gains-manual/cg78305"}]},
+    {id:8,rank:"08",diff:"low",diffLabel:"低",next:false,title:"新加坡 / 澳洲 GST 豁免边界",en:"When gold is GST-free (SG/AU)",intent:"信息 · 买什么形态才免税",tags:["APAC"],titles:["Jewellery isn’t “investment gold” for GST. Here’s the line.","纯度、LBMA 印记、异形条：哪一条会让你多付税"],site:"IPM 合格清单 vs 首饰/异形条/废料。",social:"同一克金，条免 GST、吊坠形要税。",sources:[{t:"IRAS GST exempt",u:"https://www.iras.gov.sg/taxes/goods-services-tax-(gst)/charging-gst-(output-tax)/when-is-gst-not-charged/supplies-exempt-from-gst"}]},
+    {id:9,rank:"09",diff:"mid",diffLabel:"中",next:false,title:"印度金料 3% GST + 工费 5%",en:"India GST on gold + making charges",intent:"行动 · 结账前验算",tags:["印地语机会"],titles:["The sticker isn’t just gold—it’s GST twice","金料 3%、工费 5%：一张账单怎么拆"],site:"样例账单拆解 + 与按克/一口价对照。",social:"婚庆季账单截图标注两行税。",sources:[{t:"CNBC-TV18 GST 3%",u:"https://www.cnbctv18.com/market/commodities/gold-silver-to-continue-at-3-pc-gst-as-council-leaves-rates-unchanged-19664231.htm"}]},
+    {id:10,rank:"10",diff:"mid",diffLabel:"中",next:false,title:"一口价 / 按件金饰验算",en:"Fixed-price vs by-weight jewellery",intent:"比较 → 避坑",tags:["中英双写","深化站内"],titles:["Bought by the piece. Sold by the gram.","一口价项链：总价÷克重，你付了几倍大盘价？"],site:"现场验算步骤 + 回收归零的工费/品牌溢价。",social:"折叠小字克重标签（注明来源）。",sources:[{t:"Chow Sang Sang pricing",u:"https://www.chowsangsang.com/en/Jewellery-Blog/how-gold-jewellery-is-priced"}]},
+    {id:11,rank:"11",diff:"mid",diffLabel:"中",next:false,title:"钨芯假条：磁铁不够",en:"Tungsten-filled fake gold bars",intent:"信息 → 买前检测",tags:["渠道风险"],titles:["Weight and a magnet won’t catch tungsten. What will.","买二手金条前：尺寸、声音、Sigma/XRF 各能挡什么"],site:"正规经销商/assay 卡 vs 市集；检测局限表。",social:"切开钨芯 Eagle 案例（注明讨论来源）。",sources:[{t:"r/Gold tungsten Eagle",u:"https://www.reddit.com/r/Gold/comments/1f8oxn9/a_tungsten_filled_counterfeit_american_gold_eagle/"}]},
+    {id:12,rank:"12",diff:"high",diffLabel:"高新闻",next:false,title:"央行购金 → 你的柜台价",en:"Central bank buying and retail price",intent:"信息 · 禁点位",tags:["只写传导"],titles:["1,000+ tonnes three years running—what that does to the bid you see","波兰、哈萨克、巴西在买：零售溢价会怎样动？"],site:"WGC 吨数 → 零售库存与溢价松紧。",social:"央行净买入图 +「你买的是剩余供给里的零售端」。",sources:[{t:"WGC GDT FY2025",u:"https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2025"}]},
+    {id:13,rank:"13",diff:"high",diffLabel:"高讨论",next:false,title:"等回调再买 vs 溢价优先",en:"Wait for a dip or buy on premium",intent:"行动 · 决策框架",tags:["情景算术"],titles:["Waiting for spot to drop while paying 8% premium is backwards","回调 $50，溢价多付 $80：你到底省了什么？"],site:"情景算术 + DCA；可控的是溢价不是点位。",social:"两个按钮：等 dip / 选低溢价——用数字打脸。",sources:[{t:"CBS News wait for gold",u:"https://www.cbsnews.com/news/should-you-wait-for-the-price-of-gold-to-fall-to-invest-experts-weigh-in/"}]},
+    {id:14,rank:"14",diff:"high",diffLabel:"高",next:false,title:"利率 / 美元 / 通胀碰到标价",en:"Gold vs real rates and the dollar",intent:"信息",tags:["WGC 降维"],titles:["CPI isn’t the whole story—real rates and the dollar move the sticker","「抗通胀」口号背后，实际利率在收什么税"],site:"三因子一页图；每项对 spot/溢价影响。",social:"一句「CPI 只解释金价变动的一小部分」（据 WGC）。",sources:[{t:"WGC Beyond CPI",u:"https://www.gold.org/goldhub/research/beyond-cpi-gold-as-a-strategic-inflation-hedge"}]},
+    {id:15,rank:"15",diff:"mid",diffLabel:"中",next:false,title:"经销商买卖点差",en:"Dealer bid-ask spread on gold",intent:"比较",tags:["真实持有成本"],titles:["You pay over spot to buy. You get under spot to sell. That’s the product.","Costco 不回购：低买价后面的出口成本"],site:"买入溢价 + 卖出折价双栏；对比有回购计划的经销商。",social:"最好的买入价，若不能卖回，要重算一次。",sources:[{t:"CNBC Select Costco gold",u:"https://www.cnbc.com/select/how-to-buy-gold-from-costco/"}]}
+  ];
+
+  var books=[
+    {spine:"Bernstein",title:"The Power of Gold",by:"Peter L. Bernstein · 英 · Wiley",hook:"金拥有人，而非人拥有金 → 今天标签上的溢价执念。",url:"https://www.wiley.com/en-us/The+Power+of+Gold%3A+The+History+of+an+Obsession%2C+2nd+Edition-p-9781118270103"},
+    {spine:"黄金简史",title:"《黄金简史》",by:"伯恩斯坦 / 黄磊译 · 中 · 上海财经大学",hook:"迈达斯故事短视频 → 现代一口价金饰。",url:"https://book.douban.com/subject/25844542/"},
+    {spine:"Lewis",title:"Gold: The Once and Future Money",by:"Nathan K. Lewis · 英 · Wiley",hook:"货币制度长文底料；不作荐股。可拆「为什么央行仍囤金」。",url:"https://www.wiley.com/en-us/Gold%3A+The+Once+and+Future+Money-p-9781119197232"},
+    {spine:"Zorach",title:"Gold: Nature and Culture",by:"Zorach & Phillips · 英 · Reaktion",hook:"「可穿戴的金」→ 首饰溢价文化史短篇。",url:"https://reaktionbooks.co.uk/work/gold"},
+    {spine:"Jastram",title:"The Golden Constant",by:"Roy W. Jastram / Jill Leyland · 英",hook:"抗通胀话术 vs 历史购买力数据。",url:"https://www.e-elgar.com/shop/gbp/the-golden-constant-9781847202611.html"},
+    {spine:"Kosares",title:"The ABCs of Gold Investing",by:"Michael J. Kosares · 英 · 3rd ed.",hook:"选经销商章 → 溢价比价 checklist。",url:"https://www.usagold.com/product/the-abcs-of-gold-investing-third-edition/"},
+    {spine:"Green",title:"The New World of Gold",by:"Timothy Green · 英",hook:"「金价是谁定的」产业拆解。",url:"https://www.goodreads.com/book/show/522856.The_New_World_of_Gold"},
+    {spine:"Lips",title:"Gold Wars",by:"Ferdinand Lips · 英 · 偏论战",hook:"央行卖金/买金历史争论背景；引用标明立场。",url:"https://www.amazon.com/Gold-Wars-Battle-Against-Perspective/dp/0971038007"},
+    {spine:"走进黄金",title:"《走进黄金世界》",by:"胡宪铭、贺艳玲 · 中 · 冶金工业",hook:"中文社媒「黄金是什么」系列。",url:"https://www.dushu.com/book/12794714/"},
+    {spine:"中国黄金",title:"《中国黄金：从跟随到超越》",by:"刘山恩 · 中 · 中信",hook:"上金所报价 vs 零售克价差 → 中国读者长尾。",url:"https://book.douban.com/subject/34948584/"}
+  ];
+
+  var plan=[
+    {t:"下一篇：小规格金条隐藏溢价表",d:"主题 01 · 工具感强、易配计算器、未到 Costco 级红海"},
+    {t:"紧接：熔值不是到手价",d:"主题 02 · 导流 melt 计算器，闭环买入溢价 + 卖出折价"},
+    {t:"社媒本周：每日「今日溢价%」卡",d:"标价 ÷ spot − 1；只问标签藏了百分之几，不喊多空"},
+    {t:"税收双连载 + 第三张",d:"美 collectibles → 英 Britannia vs bar → 新 GST"},
+    {t:"中英一口价验算清单",d:"英文 transparent pricing；中文折叠克重标签；CTA：总价÷克重÷spot"},
+    {t:"书单内容化",d:"Bernstein 三句执念书摘落点溢价；Jastram 做抗通胀 vs 购买力长文"},
+    {t:"避坑短视频",d:"Gold-filled vs solid 公式卡 + troy oz 误称"},
+    {t:"不要先写",d:"纯央行宏观预测 / 点位喊单；央行文必须锁在零售供给与溢价传导"}
+  ];
+
+  var grid=document.getElementById("topicGrid");
+  var empty=document.getElementById("empty");
+  var countLabel=document.getElementById("countLabel");
+  var filter="all";
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]})}
+
+  function renderTopics(){
+    var shown=0;
+    grid.innerHTML=topics.map(function(t){
+      var show=true;
+      if(filter==="low") show=(t.diff==="low");
+      else if(filter==="mid") show=(t.diff==="mid");
+      else if(filter==="high") show=(t.diff==="high");
+      else if(filter==="next") show=!!t.next;
+      else show=true;
+      if(show) shown++;
+      var src=(t.sources||[]).map(function(s){return "<li><a href=\""+esc(s.u)+"\" target=\"_blank\" rel=\"noopener\">"+esc(s.t)+"</a></li>"}).join("");
+      var tits=(t.titles||[]).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");
+      var tags=(t.tags||[]).map(function(x){return "<span class=\"pill\">"+esc(x)+"</span>"}).join("");
+      return "<article class=\"card\" data-diff=\""+esc(t.diff)+"\" data-next=\""+(t.next?"1":"0")+"\" "+(show?"":"hidden")+">"+
+        "<div class=\"card-top\"><span class=\"rank\">#"+esc(t.rank)+"</span><span class=\"diff "+esc(t.diff)+"\">竞争 "+esc(t.diffLabel)+"</span></div>"+
+        "<div class=\"card-body\"><h3>"+esc(t.title)+"</h3><p class=\"en\">"+esc(t.en)+"</p>"+
+        "<div class=\"meta\"><span class=\"pill\">"+esc(t.intent)+"</span>"+tags+"</div></div>"+
+        "<details><summary>标题 · 写法 · 来源</summary><div class=\"detail\">"+
+        "<p><strong>示例标题</strong></p><ul>"+tits+"</ul>"+
+        "<p><strong>网站</strong> "+esc(t.site)+"</p>"+
+        "<p><strong>社媒</strong> "+esc(t.social)+"</p>"+
+        (src?"<p><strong>来源</strong></p><ul>"+src+"</ul>":"")+
+        (t.q?"<p><strong>搜索词</strong> <code>"+esc(t.q)+"</code></p>":"")+
+        "</div></details></article>";
+    }).join("");
+    empty.classList.toggle("show",shown===0);
+    countLabel.textContent="显示 "+shown+" / "+topics.length;
+  }
+
+  document.querySelectorAll(".chip[data-filter]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      filter=btn.getAttribute("data-filter");
+      document.querySelectorAll(".chip[data-filter]").forEach(function(b){b.setAttribute("aria-pressed",b===btn?"true":"false")});
+      renderTopics();
+    });
+  });
+
+  document.getElementById("bookList").innerHTML=books.map(function(b){
+    return "<article class=\"book\"><div class=\"spine\" aria-hidden=\"true\">"+esc(b.spine)+"</div><div>"+
+      "<h3>"+esc(b.title)+"</h3><p class=\"by\">"+esc(b.by)+"</p><p class=\"hook\">"+esc(b.hook)+"</p>"+
+      "<p><a href=\""+esc(b.url)+"\" target=\"_blank\" rel=\"noopener\">来源</a></p></div></article>";
+  }).join("");
+
+  document.getElementById("planList").innerHTML=plan.map(function(p){
+    return "<div class=\"step\"><div><strong>"+esc(p.t)+"</strong><span>"+esc(p.d)+"</span></div></div>";
+  }).join("");
+
+  renderTopics();
+
+  var K="nexus-board-theme",r=document.documentElement,b=document.getElementById("themeToggle");
+  function def(){var h=new Date().getHours();return (h>=7&&h<19)?"light":"dark"}
+  function apply(t){r.setAttribute("data-theme",t);b.textContent=t==="dark"?"切换到浅色":"切换到暗色"}
+  var s=null;try{s=localStorage.getItem(K)}catch(e){}
+  apply((s==="light"||s==="dark")?s:def());
+  b.onclick=function(){var n=r.getAttribute("data-theme")==="dark"?"light":"dark";apply(n);try{localStorage.setItem(K,n)}catch(e){}};
+})();
+</script>
+</body>
+</html>
