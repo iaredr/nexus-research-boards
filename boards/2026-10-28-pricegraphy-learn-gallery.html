@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pricegraphy · 可学案例对照板</title>
+<meta name="description" content="书图 + 站上案例对照：贴合理念 / 可视化可学 / 出版启发。See what the price hides."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://iaredr.github.io/nexus-research-boards/boards/2026-10-28-pricegraphy-learn-gallery.html"/>
+<meta property="og:title" content="Pricegraphy · 可学案例对照板"/>
+<meta property="og:description" content="理念对齐 · 可视化可学 · 出版启发。筛选哪些最值得学进 Pricegraphy。"/>
+<meta property="og:image" content="https://iaredr.github.io/nexus-research-boards/boards/assets/learn-gallery/case-costco-premium.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root,[data-theme=light]{
+  --bg:#f3eee4;--ink:#1a1712;--mute:#6a6358;--rule:#d4cbb8;
+  --panel:#faf7f0;--panel2:#efe8da;--brass:#8a6d32;--brass-soft:#c4a45a;
+  --mark:#9a3d2e;--ok:#3d6b4f;--focus:#8a6d32;--stamp:#b89a4a33;
+  --shadow:0 1px 0 #0000000a,0 8px 24px #1a17120d;--ph:#e8e0d0;--overlay:#1a1712cc;
+}
+[data-theme=dark]{
+  --bg:#12100e;--ink:#ebe4d6;--mute:#9a9286;--rule:#2f2a24;
+  --panel:#1b1814;--panel2:#241f1a;--brass:#c4a45a;--brass-soft:#8a6d32;
+  --mark:#e08a6a;--ok:#7aab8a;--focus:#c4a45a;--stamp:#c4a45a22;
+  --shadow:0 1px 0 #ffffff08,0 10px 28px #00000066;--ph:#2a241c;--overlay:#000000cc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.55}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;z-index:0;
+  background-image:radial-gradient(var(--rule) 0.6px,transparent 0.7px);background-size:14px 14px;
+}
+.wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:1.1rem 1.15rem 4rem}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.35rem;font-size:.78rem;color:var(--mute)}
+.bar-left{display:flex;flex-wrap:wrap;gap:.55rem .9rem;align-items:center}
+.theme{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:.4rem .75rem;cursor:pointer}
+.theme:focus-visible,.chip:focus-visible,button.thumb:focus-visible,.lb-close:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1.4fr .85fr;gap:1.25rem;align-items:stretch;margin-bottom:1.4rem}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+.ticket{background:var(--panel);border:1px solid var(--rule);box-shadow:var(--shadow);padding:1.35rem 1.4rem 1.25rem;position:relative;overflow:hidden}
+.ticket::after{content:"";position:absolute;top:-18px;right:28px;width:64px;height:64px;border-radius:50%;border:2px dashed var(--brass);background:var(--stamp);opacity:.85;transform:rotate(12deg)}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--brass);margin:0 0 .55rem;letter-spacing:.02em}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6vw,2.75rem);line-height:1.08;margin:0 0 .55rem;letter-spacing:-.01em;max-width:14ch}
+.lede{margin:0 0 .9rem;color:var(--mute);max-width:48ch}
+.thesis{margin:0;padding:.85rem 0 0;border-top:1px solid var(--rule);font-family:"Cormorant Garamond",Georgia,serif;font-size:1.18rem;font-weight:500;line-height:1.35}
+.side-stack{display:grid;gap:.75rem}
+.stat{background:var(--panel2);border:1px solid var(--rule);padding:.9rem 1rem;display:grid;gap:.2rem}
+.stat b{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.85rem;font-weight:600;line-height:1;color:var(--brass)}
+.stat span{font-size:.8rem;color:var(--mute)}
+.rubric{background:var(--panel);border:1px solid var(--rule);padding:1rem 1.1rem;margin:0 0 1.35rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem}
+@media (max-width:800px){.rubric{grid-template-columns:1fr}}
+.rubric h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.28rem;margin:0 0 .55rem;font-weight:600;grid-column:1/-1}
+.r-item{border-top:1px dashed var(--rule);padding-top:.55rem}
+.r-item strong{display:block;font-size:.92rem;margin-bottom:.2rem}
+.r-item span{font-size:.82rem;color:var(--mute)}
+.filters{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;align-items:center;position:sticky;top:0;z-index:5;padding:.55rem 0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px)}
+.filters .label{font-size:.78rem;color:var(--mute);margin-right:.2rem}
+.chip{font:inherit;font-size:.78rem;padding:.35rem .7rem;border-radius:999px;cursor:pointer;border:1px solid var(--rule);background:transparent;color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:1.65rem 0 .75rem}
+.sec-head h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.55rem;margin:0;font-weight:600}
+.sec-head p{margin:0;font-size:.8rem;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+@media (max-width:780px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:column;min-height:100%}
+.card[hidden]{display:none!important}
+.shot{aspect-ratio:16/10;background:var(--ph);border-bottom:1px solid var(--rule);position:relative;overflow:hidden;cursor:zoom-in}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .badge{position:absolute;left:.55rem;top:.55rem;font-size:.68rem;padding:.18rem .45rem;background:var(--panel);border:1px solid var(--rule);color:var(--brass);font-family:"IBM Plex Mono",ui-monospace,monospace;z-index:1}
+.interiors{display:flex;gap:.35rem;padding:.55rem .75rem 0;flex-wrap:wrap}
+.thumb{padding:0;border:1px solid var(--rule);background:var(--panel2);cursor:zoom-in;width:72px;height:54px;overflow:hidden;border-radius:1px}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.caution{border-color:color-mix(in srgb,var(--mark) 55%,var(--rule))}
+.card-body{padding:.75rem 1rem 1rem;display:grid;gap:.5rem;flex:1}
+.card h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.15rem;margin:0;font-weight:600;line-height:1.25}
+.by{margin:0;font-size:.8rem;color:var(--mute)}
+.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem}
+.score{background:var(--panel2);border:1px solid var(--rule);padding:.4rem .45rem;text-align:center}
+.score b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;color:var(--brass);line-height:1}
+.score span{font-size:.65rem;color:var(--mute)}
+.bullets{margin:0;padding-left:1.05rem;font-size:.86rem}
+.bullets li{margin:.2rem 0}
+.warn{margin:0;font-size:.82rem;color:var(--mark);border-left:2px solid var(--mark);padding-left:.55rem}
+.publish{margin:0;font-size:.82rem;color:var(--mute);font-style:italic}
+.layout-note{margin:0;font-size:.82rem;padding:.45rem .55rem;background:var(--panel2);border:1px dashed var(--rule)}
+.empty{display:none;padding:1.2rem;border:1px dashed var(--rule);color:var(--mute);text-align:center;margin-bottom:1rem}
+.empty.show{display:block}
+.priority{display:grid;gap:.55rem;margin-top:.4rem}
+.prio{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:start;background:var(--panel);border:1px solid var(--rule);padding:.85rem 1rem}
+.prio .n{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.78rem;color:var(--brass);padding-top:.2rem}
+.prio strong{display:block;margin-bottom:.15rem}
+.prio span{font-size:.86rem;color:var(--mute)}
+.prio .tot{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.45rem;color:var(--brass);font-weight:600}
+.pub-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+@media (max-width:800px){.pub-opts{grid-template-columns:1fr}}
+.pub-card{background:var(--panel);border:1px solid var(--rule);padding:1rem;position:relative}
+.pub-card.rec{border-color:var(--brass);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 35%,transparent)}
+.pub-card .tag{position:absolute;top:.65rem;right:.65rem;font-size:.68rem;padding:.15rem .4rem;border:1px solid var(--brass);color:var(--brass);font-family:"IBM Plex Mono",ui-monospace,monospace}
+.pub-card h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.15rem;margin:0 0 .4rem;font-weight:600;padding-right:3.5rem}
+.pub-card p{margin:0 0 .45rem;font-size:.86rem;color:var(--mute)}
+.pub-card ul{margin:0;padding-left:1.05rem;font-size:.86rem}
+.blend{margin:1rem 0 0;padding:1rem;background:var(--panel2);border:1px solid var(--rule);font-size:.9rem}
+.blend strong{color:var(--brass)}
+footer{margin-top:2.4rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.78rem;color:var(--mute)}
+footer a{color:var(--brass)}
+.lb{position:fixed;inset:0;background:var(--overlay);z-index:40;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.lb.open{display:flex}
+.lb img{max-width:min(1100px,96vw);max-height:90vh;object-fit:contain;border:1px solid var(--rule);background:var(--panel);box-shadow:var(--shadow)}
+.lb-close{position:absolute;top:1rem;right:1rem;font:inherit;background:var(--panel);border:1px solid var(--rule);color:var(--ink);padding:.4rem .75rem;cursor:pointer}
+.caution-pill{display:inline-block;font-size:.68rem;padding:.12rem .4rem;border:1px solid var(--mark);color:var(--mark);margin-left:.35rem;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="bar-left">
+      <span>2026-10-28 · Pricegraphy</span>
+      <span>learn gallery · 截图已齐</span>
+    </div>
+    <button type="button" class="theme" id="themeToggle">切换到浅色</button>
+  </div>
+
+  <header class="hero">
+    <div class="ticket">
+      <p class="eyebrow">ASSAY · LEARN GALLERY</p>
+      <h1>可学案例对照板</h1>
+      <p class="lede">诚品台湾黄金书关键图 + Pricegraphy 站上成品同页对照。筛哪些最贴「拆溢价 / 比价 / 标签数学」，并标出版启发。</p>
+      <p class="thesis">品质条不变：价格标签数学 + 可执行比价。喊单与点位预测标红避开——封面能学规格，内页喊 $5000 的不能学。</p>
+    </div>
+    <div class="side-stack">
+      <div class="stat"><b id="statBooks">8</b><span>书（封面 + 内页）</span></div>
+      <div class="stat"><b id="statSites">9</b><span>站上真实成品截图</span></div>
+      <div class="stat"><b id="statImgs">—</b><span>页内图片总数</span></div>
+    </div>
+  </header>
+
+  <section class="rubric" aria-labelledby="rubric-h">
+    <h2 id="rubric-h">打分尺</h2>
+    <div class="r-item"><strong>贴合理念 1–5</strong><span>拆溢价 / 比价 / 标签数学高分；喊单、回报叙事低分。</span></div>
+    <div class="r-item"><strong>可视化可学 1–5</strong><span>图、表、信息图能否直接借鉴版式与信息密度。</span></div>
+    <div class="r-item"><strong>出版启发 1–5</strong><span>能否启发图解小册 / 溢价手册 / 比价工作簿。</span></div>
+  </section>
+
+  <div class="filters" role="group" aria-label="筛选">
+    <span class="label">看</span>
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-filter="fit" aria-pressed="false">最贴理念</button>
+    <button type="button" class="chip" data-filter="viz" aria-pressed="false">最可视化</button>
+    <button type="button" class="chip" data-filter="pub" aria-pressed="false">出版启发</button>
+    <button type="button" class="chip" data-filter="site" aria-pressed="false">站上案例</button>
+    <button type="button" class="chip" data-filter="book" aria-pressed="false">书</button>
+  </div>
+  <div id="empty" class="empty">没有匹配项，换个筛选试试。</div>
+
+  <div class="sec-head">
+    <h2>站上案例 · 可直接抄的版式</h2>
+    <p id="siteCount">9 条</p>
+  </div>
+  <div class="grid" id="siteGrid"></div>
+
+  <div class="sec-head">
+    <h2>书 · 诚品台湾</h2>
+    <p id="bookCount">8 本</p>
+  </div>
+  <div class="grid" id="bookGrid"></div>
+
+  <div class="sec-head">
+    <h2>优先学习清单 · Top 5</h2>
+    <p>按真实成品视觉 + 三轴对齐重排</p>
+  </div>
+  <div class="priority" id="topList"></div>
+
+  <div class="sec-head">
+    <h2>若做出版 · 三种形态（建议组合）</h2>
+    <p>最佳路径：图解节奏 × Costco 级标签数学 × 可填工作簿</p>
+  </div>
+  <div class="pub-opts">
+    <article class="pub-card rec">
+      <span class="tag">推荐骨架</span>
+      <h3>图解小册</h3>
+      <p>对标《圖解貨幣簡史》内页：一页一钩、左叙事右符号。</p>
+      <ul>
+        <li>每章一张「价签解剖图」（学宇宙金彩图密度）</li>
+        <li>社媒卡 → 成书页，几乎零改造</li>
+        <li>宏观史只作开场，立刻落到 sticker</li>
+      </ul>
+    </article>
+    <article class="pub-card rec">
+      <span class="tag">推荐核心</span>
+      <h3>溢价拆解手册</h3>
+      <p>对标站上 Costco / Spot vs retail / Melt：工具感正文。</p>
+      <ul>
+        <li>一章 = 一张价签拆解（spot / 溢价 / 税 / 回购）</li>
+        <li>附计算器二维码，闭环站上资产</li>
+        <li>语气直白拆穿，不做说明书腔</li>
+      </ul>
+    </article>
+    <article class="pub-card">
+      <span class="tag">附录形态</span>
+      <h3>比价工作簿</h3>
+      <p>空白栏让读者填银楼 / 电商 / Costco 当日价。</p>
+      <ul>
+        <li>章节 = 验算清单（学一口价、克重表）</li>
+        <li>可续订年度税表附录（美/英/新）</li>
+        <li>本地化版本：台 / 新 / 美分册</li>
+      </ul>
+    </article>
+  </div>
+  <div class="blend">
+    <strong>出版组合建议：</strong>主书用「圖解貨幣簡史」的页节奏做图解小册外壳；正文章法抄 Costco 溢价拆解 + 一根条三种价；附录做比价工作簿（克 karat 表、熔值区间、$1000 能买什么）。贵金属领航 / 华尔街投资法只借规格与对照表，内页喊单一律剔除。
+  </div>
+
+  <footer>
+    对照 <a href="2026-10-27-pricegraphy-content.html">2026-10-27 长尾内容板</a> ·
+    站点 <a href="https://pricegraphy.com/">pricegraphy.com</a> ·
+    <a href="https://github.com/iaredr/nexus-research-boards">源码仓</a>
+  </footer>
+</div>
+
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="大图">
+  <button type="button" class="lb-close" id="lbClose">关闭</button>
+  <img id="lbImg" alt=""/>
+</div>
+
+<script>
+(function(){
+  var AS="assets/learn-gallery/";
+
+  var books=[
+    {
+      id:"b1", type:"book", slug:"book-gold-morrow",
+      img:AS+"book-gold-morrow.png",
+      interiors:[AS+"book-gold-morrow-interior-01.png",AS+"book-gold-morrow-interior-02.png"],
+      title:"《黃金：從宇宙誕生到金融市場…》", by:"東尼·李·莫羅 · 繁中 · 约 300 張彩圖",
+      fit:5, viz:5, pub:5,
+      learn:["彩图密度可直接做成「一图一价签」社媒/书页","时间轴叙事：宇宙→淘金→市场，落点零售溢价","内页信息图是图解小册母本之一"],
+      avoid:"别整本复述宏大叙事；每图必须接回今天标签上的溢价。",
+      pubNote:"图解小册视觉密度首选参考。",
+      tags:["fit","viz","pub"]
+    },
+    {
+      id:"b2", type:"book", slug:"book-illustrated-money",
+      img:AS+"book-illustrated-money.png",
+      interiors:[AS+"book-illustrated-money-interior-01.png",AS+"book-illustrated-money-interior-02.png"],
+      title:"《圖解貨幣簡史》", by:"維達利 · 繪圖信息图",
+      fit:4, viz:5, pub:5,
+      learn:["一页一钩：金本位图 → 为什么 sticker 会动","左叙事右符号的出版级版式","章节短，适合工作簿附录节奏"],
+      avoid:"货币史离「比价」太远时硬切回克价/溢价。",
+      pubNote:"出版形态首选：图解小册页节奏。",
+      tags:["fit","viz","pub"]
+    },
+    {
+      id:"b3", type:"book", slug:"book-secret-history-gold",
+      img:AS+"book-secret-history-gold.png", interiors:[],
+      title:"《黃金如何驅動世界？》", by:"弗里斯比 · Secret History of Gold",
+      fit:4, viz:3, pub:4,
+      learn:["购买力用金价衡量的写法","央行囤金 → 零售供给（禁点位）","可喂长尾「央行→柜台价」书摘"],
+      avoid:"结构史勿写成投资回报故事。",
+      pubNote:"手册开篇章「为什么标签会动」。",
+      tags:["fit","pub"]
+    },
+    {
+      id:"b4", type:"book", slug:"book-great-devaluation",
+      img:AS+"book-great-devaluation.png", interiors:[],
+      title:"《大貶值》", by:"亞當·巴拉塔",
+      fit:3, viz:2, pub:3,
+      learn:["债务→贬值→金 可做成三格连环图","宏观只解释贴纸价","拆穿语气可学"],
+      avoid:"任何点位/仓位暗示一律砍。",
+      pubNote:"手册半章「宏观碰到标价」。",
+      tags:["book"]
+    },
+    {
+      id:"b5", type:"book", slug:"book-wallet-world-history",
+      img:AS+"book-wallet-world-history.png",
+      interiors:[AS+"book-wallet-world-history-interior-01.png"],
+      title:"《錢包裡的世界史》", by:"宮崎正勝",
+      fit:3, viz:3, pub:4,
+      learn:["「钱包」隐喻贴近 everyday prices","长叙事短摘适合目录钩子","内页排版疏密可参考"],
+      avoid:"勿扩成币圈荐币。",
+      pubNote:"图解小册目录节奏参考。",
+      tags:["pub"]
+    },
+    {
+      id:"b6", type:"book", slug:"book-not-just-0050",
+      img:AS+"book-not-just-0050.png",
+      interiors:[AS+"book-not-just-0050-interior-01.png"],
+      title:"《不只0050：黃金&白銀ETF…》", by:"元大投信 · 台湾市场",
+      fit:5, viz:4, pub:4,
+      learn:["实体 vs 存摺 vs ETF 成本/税对照","贴 everyday gold 的本地品类表","内页表头可移植工具页"],
+      avoid:"基金推介语气；只借品类/成本章。",
+      pubNote:"溢价手册「买什么形态」核心表。",
+      tags:["fit","viz","pub"]
+    },
+    {
+      id:"b7", type:"book", slug:"book-precious-metals-guide",
+      img:AS+"book-precious-metals-guide.png", interiors:[],
+      caution:true,
+      title:"《貴金屬領航》", by:"連尉宏 · 封面含预测语气 · 慎用",
+      fit:3, viz:3, pub:2,
+      learn:["条块规格、银楼管道、溢价币品项","本地渠道名词可进中文站","规格表可学"],
+      avoid:"封面/正文价位预测——站上只借品项与溢价，禁预测章。别学喊单。",
+      pubNote:"仅规格附录素材，不宜当全书骨架。",
+      tags:["book"]
+    },
+    {
+      id:"b8", type:"book", slug:"book-wall-street-gold",
+      img:AS+"book-wall-street-gold.png",
+      interiors:[AS+"book-wall-street-gold-interior-01.png"],
+      caution:true, cautionInterior:true,
+      title:"《華爾街頂尖操盤手的黃金投資法》", by:"+ 市場先生 · 内页有 $5000 点位 · 慎用",
+      fit:4, viz:4, pub:3,
+      learn:["七种商品优劣势对照表 = 比价表原型","市场先生本地化注释可学","产品矩阵一页可抄"],
+      avoid:"内页喊单/$5000 点位——整段剔除。操盘法与理念冲突，跳过。别学喊单。",
+      pubNote:"手册「买什么」总表模板；预测页不进书。",
+      tags:["fit","viz"]
+    }
+  ];
+
+  var sites=[
+    {
+      id:"s1", type:"site", slug:"case-costco-premium",
+      img:AS+"case-costco-premium.png",
+      title:"Costco 溢价拆解", by:"pricegraphy.com · 标签数学金标准",
+      fit:5, viz:5, pub:5, forceTop:1,
+      learn:["把会员价拆成 spot / 溢价 / 返点后净溢价","同一页完成「今天贵不贵」的可执行比价","社媒可拆成「今日溢价%」卡"],
+      avoid:"别写成 Costco 荐买或点位预测。",
+      pubNote:"溢价拆解手册第一章母本。",
+      layout:"大数字价签 + 分层公式 + 对比经销商。",
+      tags:["fit","viz","pub","site"]
+    },
+    {
+      id:"s2", type:"site", slug:"case-spot-vs-retail",
+      img:AS+"case-spot-vs-retail.png",
+      title:"一根条 · 三种价", by:"Spot vs retail · 一眼看穿",
+      fit:5, viz:5, pub:5, forceTop:2,
+      learn:["同一实物并排 spot / 买价 / 卖价","点差=真实持有成本，理念最贴","成书跨页或折页超好用"],
+      avoid:"暗示「现在该买/该卖」。",
+      pubNote:"手册封面级信息图。",
+      layout:"一物三价签横排，差额用一条色带。",
+      tags:["fit","viz","pub","site"]
+    },
+    {
+      id:"s3", type:"site", slug:"case-melt-gap",
+      img:AS+"case-melt-gap.png",
+      title:"熔值 ≠ 到手价", by:"Melt 计算器区间",
+      fit:5, viz:5, pub:4, forceTop:3,
+      learn:["熔值 vs 柜台报价双栏","差价=隐藏卖出成本","导流计算器闭环"],
+      avoid:"假装教「哪里卖最高」。",
+      pubNote:"工作簿「卖出前验算」页。",
+      layout:"双栏大数字 + 灰色差额条 + 区间。",
+      tags:["fit","viz","pub","site"]
+    },
+    {
+      id:"s4", type:"site", slug:"case-premium-calc",
+      img:AS+"case-premium-calc.png",
+      title:"溢价计算器页", by:"Premium calc · 工具感",
+      fit:5, viz:4, pub:4,
+      learn:["输入标价即出溢价%","工具页即文章 CTA","可印成手册附页二维码目标"],
+      avoid:"把工具做成行情终端。",
+      pubNote:"手册每章末「打开计算器」钩子。",
+      layout:"单输入 + 大结果% + 短解释。",
+      tags:["fit","viz","site","pub"]
+    },
+    {
+      id:"s5", type:"site", slug:"case-premium-meaning",
+      img:AS+"case-premium-meaning.png",
+      title:"溢价是什么（入门）", by:"Premium meaning · 概念页",
+      fit:5, viz:4, pub:4,
+      learn:["一页讲清 premium 不是「贵一点」","定义页适合小册第 0 章","语气直白对标站调"],
+      avoid:"宏观名词堆砌。",
+      pubNote:"图解小册开篇定义页。",
+      layout:"定义句 + 一例数字 + 反例。",
+      tags:["fit","viz","site","pub"]
+    },
+    {
+      id:"s6", type:"site", slug:"case-gram-karat",
+      img:AS+"case-gram-karat.png",
+      title:"克重 × 成色表", by:"Gram / karat table",
+      fit:5, viz:5, pub:4,
+      learn:["表即工具，可直接印工作簿","成色换算避坑常青","中英都好本地化"],
+      avoid:"表里塞投资建议。",
+      pubNote:"比价工作簿必备附录表。",
+      layout:"紧凑对照表，一行一成色。",
+      tags:["fit","viz","site","pub"]
+    },
+    {
+      id:"s7", type:"site", slug:"case-1000-dollars",
+      img:AS+"case-1000-dollars.png",
+      title:"$1000 能买什么金", by:"预算情景算术",
+      fit:5, viz:4, pub:4,
+      learn:["固定预算 → 规格/溢价权衡","情景算术服务「买什么」","社媒与书章都好拆"],
+      avoid:"暗示唯一正确答案。",
+      pubNote:"工作簿练习题模板。",
+      layout:"预算框 + 可选规格卡片。",
+      tags:["fit","viz","site","pub"]
+    },
+    {
+      id:"s8", type:"site", slug:"case-tax-sell",
+      img:AS+"case-tax-sell.png",
+      title:"卖金税检查", by:"Tax on selling · 美税等",
+      fit:4, viz:4, pub:3,
+      learn:["检查表结构可复制到英/新篇","税是标签隐藏项之一","连载骨架清晰"],
+      avoid:"税务咨询口吻；标明非建议。",
+      pubNote:"手册附录「卖出前三张检查表」。",
+      layout:"清单 + 短注释，少装饰。",
+      tags:["fit","viz","site"]
+    },
+    {
+      id:"s9", type:"site", slug:"case-homepage",
+      img:AS+"case-homepage.png",
+      title:"站点首页定位", by:"See what the price hides",
+      fit:5, viz:4, pub:4,
+      learn:["一句定位压过行情喧哗","品质条：标签数学 + 比价","书封/扉页语气母本"],
+      avoid:"首页做成行情看板。",
+      pubNote:"封面与扉页语气。",
+      layout:"大标题 + thesis + 工具入口。",
+      tags:["fit","viz","site","pub"]
+    }
+  ];
+
+  // Fixed Top 5 per brief (visual + philosophy)
+  var topFixed=[
+    {id:"s1", why:"标签数学金标准：Costco 价签拆到净溢价，手册第一章直接抄。"},
+    {id:"s2", why:"一根条三种价——点差=持有成本，封面级信息图。"},
+    {id:"s3", why:"熔值区间 vs 到手价，卖出侧闭环 + 计算器导流。"},
+    {id:"b2", why:"《圖解貨幣簡史》内页：可出版的一页一钩信息图工艺。"},
+    {id:"b1", why:"《黃金宇宙》彩图密度；亦可并列《不只0050》品类对照（#6）。"}
+  ];
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]})}
+
+  var lb=document.getElementById("lightbox");
+  var lbImg=document.getElementById("lbImg");
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt||"";lb.classList.add("open")}
+  function closeLb(){lb.classList.remove("open");lbImg.removeAttribute("src")}
+  document.getElementById("lbClose").onclick=closeLb;
+  lb.addEventListener("click",function(e){if(e.target===lb)closeLb()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb()});
+
+  function shotHtml(item){
+    var badge=item.type==="book"?"BOOK":"SITE";
+    if(item.caution) badge+=" · 慎";
+    return "<div class=\"shot\" data-full=\""+esc(item.img)+"\" data-alt=\""+esc(item.title)+"\" role=\"button\" tabindex=\"0\">"+
+      "<span class=\"badge\">"+badge+"</span>"+
+      "<img src=\""+esc(item.img)+"\" alt=\""+esc(item.title)+"\" loading=\"lazy\"/></div>";
+  }
+
+  function interiorsHtml(item){
+    var arr=item.interiors||[];
+    if(!arr.length) return "";
+    var caution=item.cautionInterior;
+    return "<div class=\"interiors\">"+arr.map(function(src,i){
+      var cls=caution?"thumb caution":"thumb";
+      var label=caution?"内页（含喊单·别学） "+(i+1):"内页 "+(i+1);
+      return "<button type=\"button\" class=\""+cls+"\" data-full=\""+esc(src)+"\" data-alt=\""+esc(item.title+" · "+label)+"\" title=\""+esc(label)+"\">"+
+        "<img src=\""+esc(src)+"\" alt=\""+esc(label)+"\" loading=\"lazy\"/></button>";
+    }).join("")+(caution?"<span class=\"caution-pill\">内页喊单 · 别学</span>":"")+"</div>";
+  }
+
+  function cardHtml(item){
+    var learn=(item.learn||[]).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");
+    var layout=item.layout?"<p class=\"layout-note\"><strong>可直接抄的版式</strong> "+esc(item.layout)+"</p>":"";
+    var dataTags=(item.tags||[]).join(" ");
+    var cautionTitle=item.caution?"<span class=\"caution-pill\">慎用</span>":"";
+    return "<article class=\"card\" data-id=\""+esc(item.id)+"\" data-type=\""+esc(item.type)+"\" data-fit=\""+item.fit+"\" data-viz=\""+item.viz+"\" data-pub=\""+item.pub+"\" data-tags=\""+esc(dataTags)+"\">"+
+      shotHtml(item)+interiorsHtml(item)+
+      "<div class=\"card-body\">"+
+      "<h3>"+esc(item.title)+" "+cautionTitle+"</h3>"+
+      "<p class=\"by\">"+esc(item.by)+"</p>"+
+      "<div class=\"scores\">"+
+      "<div class=\"score\"><b>"+item.fit+"</b><span>贴合理念</span></div>"+
+      "<div class=\"score\"><b>"+item.viz+"</b><span>可视化</span></div>"+
+      "<div class=\"score\"><b>"+item.pub+"</b><span>出版启发</span></div>"+
+      "</div>"+
+      "<p style=\"margin:0;font-size:.82rem\"><strong>学什么</strong></p>"+
+      "<ul class=\"bullets\">"+learn+"</ul>"+
+      "<p class=\"warn\"><strong>别学</strong> "+esc(item.avoid)+"</p>"+
+      "<p class=\"publish\">出版启发："+esc(item.pubNote)+"</p>"+
+      layout+
+      "</div></article>";
+  }
+
+  var byId={};
+  books.concat(sites).forEach(function(x){byId[x.id]=x});
+
+  document.getElementById("bookGrid").innerHTML=books.map(cardHtml).join("");
+  document.getElementById("siteGrid").innerHTML=sites.map(cardHtml).join("");
+
+  document.getElementById("topList").innerHTML=topFixed.map(function(row,i){
+    var x=byId[row.id];
+    var tot=x.fit+x.viz+x.pub;
+    return "<div class=\"prio\"><span class=\"n\">#"+(i+1)+"</span><div><strong>"+esc(x.title)+"</strong><span>"+
+      esc(x.type==="book"?"书":"站上")+" · 理念 "+x.fit+" · 可视化 "+x.viz+" · 出版 "+x.pub+" — "+esc(row.why)+
+      "</span></div><span class=\"tot\">"+tot+"</span></div>";
+  }).join("");
+
+  var imgCount=0;
+  books.concat(sites).forEach(function(x){
+    imgCount+=1+(x.interiors?x.interiors.length:0);
+  });
+  document.getElementById("statImgs").textContent=String(imgCount);
+  document.getElementById("statBooks").textContent=String(books.length);
+  document.getElementById("statSites").textContent=String(sites.length);
+
+  var filter="all";
+  var empty=document.getElementById("empty");
+  function match(el){
+    var fit=+el.getAttribute("data-fit"), viz=+el.getAttribute("data-viz"), pub=+el.getAttribute("data-pub");
+    var type=el.getAttribute("data-type");
+    if(filter==="all") return true;
+    if(filter==="book") return type==="book";
+    if(filter==="site") return type==="site";
+    if(filter==="fit") return fit>=4;
+    if(filter==="viz") return viz>=4;
+    if(filter==="pub") return pub>=4;
+    return true;
+  }
+  function applyFilter(){
+    var cards=document.querySelectorAll(".card");
+    var shown=0,b=0,s=0;
+    cards.forEach(function(c){
+      var ok=match(c);
+      c.hidden=!ok;
+      if(ok){shown++; if(c.getAttribute("data-type")==="book") b++; else s++;}
+    });
+    empty.classList.toggle("show",shown===0);
+    document.getElementById("bookCount").textContent=b+" 本显示";
+    document.getElementById("siteCount").textContent=s+" 条显示";
+  }
+  document.querySelectorAll(".chip[data-filter]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      filter=btn.getAttribute("data-filter");
+      document.querySelectorAll(".chip[data-filter]").forEach(function(b){b.setAttribute("aria-pressed",b===btn?"true":"false")});
+      applyFilter();
+    });
+  });
+  applyFilter();
+
+  document.querySelectorAll(".shot, button.thumb").forEach(function(el){
+    function go(){var src=el.getAttribute("data-full"); if(src) openLb(src, el.getAttribute("data-alt")||"")}
+    el.addEventListener("click",go);
+    el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}});
+  });
+
+  var K="nexus-board-theme",r=document.documentElement,tb=document.getElementById("themeToggle");
+  function def(){var h=new Date().getHours();return (h>=7&&h<19)?"light":"dark"}
+  function apply(t){r.setAttribute("data-theme",t);tb.textContent=t==="dark"?"切换到浅色":"切换到暗色"}
+  var s=null;try{s=localStorage.getItem(K)}catch(e){}
+  apply((s==="light"||s==="dark")?s:def());
+  tb.onclick=function(){var n=r.getAttribute("data-theme")==="dark"?"light":"dark";apply(n);try{localStorage.setItem(K,n)}catch(e){}};
+})();
+</script>
+</body>
+</html>
