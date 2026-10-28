@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Weekly Bar · 订阅体验设计定稿</title>
+<meta name="description" content="修掉品牌断裂、双重表单、空壳邮件。一屏看清：站内一次订阅 → 收信 → 打开信。"/>
+<meta property="og:title" content="The Weekly Bar · 订阅体验设计定稿"/>
+<meta property="og:description" content="Pricegraphy 周刊订阅：一表单、同品牌、可发的样刊。"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root,[data-theme=light]{
+  --bg:#f3eee4;--ink:#121212;--mute:#5c574e;--rule:#d4cbb8;
+  --panel:#faf7f0;--panel2:#efe8da;--brass:#8a6d32;--paper:#fffdf8;
+  --shadow:0 1px 0 #0000000a,0 12px 32px #12121212;
+}
+[data-theme=dark]{
+  --bg:#12100e;--ink:#ebe4d6;--mute:#9a9286;--rule:#2f2a24;
+  --panel:#1b1814;--panel2:#241f1a;--brass:#c4a45a;--paper:#1f1b16;
+  --shadow:0 1px 0 #ffffff08,0 12px 32px #00000066;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;z-index:0;background-image:radial-gradient(var(--rule) .55px,transparent .65px);background-size:13px 13px}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:1rem 1.1rem 4rem}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--mute)}
+.theme{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:.4rem .75rem;cursor:pointer}
+.theme:focus-visible,.tab:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.hero{margin:0 0 1.5rem;padding:1.35rem 1.4rem;background:var(--panel);border:1px solid var(--rule);box-shadow:var(--shadow)}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--brass);margin:0 0 .5rem}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(1.9rem,4.2vw,2.65rem);line-height:1.08;margin:0 0 .55rem;max-width:22ch}
+.lede{margin:0;color:var(--mute);max-width:54ch}
+.tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.1rem}
+.tab{font:inherit;font-size:.8rem;padding:.45rem .85rem;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;border-radius:999px}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.panel{display:none}
+.panel.is-on{display:block}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.1rem;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);box-shadow:var(--shadow);padding:1.15rem 1.2rem}
+.card h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;font-weight:600;margin:0 0 .35rem}
+.card .hint{margin:0 0 1rem;color:var(--mute);font-size:.88rem}
+/* device frame */
+.device{background:var(--panel2);border:1px solid var(--rule);padding:.65rem;border-radius:2px}
+.device-top{display:flex;align-items:center;gap:.45rem;padding:0 .25rem .55rem;font-size:.7rem;color:var(--mute);font-family:"IBM Plex Mono",monospace}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--rule)}
+.screen{background:var(--paper);border:1px solid var(--rule);min-height:420px}
+/* fixed subscribe */
+.sub-page{padding:1.35rem 1.2rem 1.5rem}
+.sub-brand{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 1.1rem;display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:.55rem}
+.sub-page h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.75rem;font-weight:600;line-height:1.12;margin:0 0 .45rem}
+.sub-page .pitch{margin:0 0 1.15rem;color:var(--mute);font-size:.95rem}
+.field{display:grid;gap:.35rem;margin:0 0 .75rem}
+.field label{font-size:.72rem;color:var(--mute);font-family:"IBM Plex Mono",monospace}
+.field input{width:100%;border:1px solid var(--rule);background:var(--bg);color:var(--ink);padding:.7rem .75rem;font:inherit;border-radius:0}
+.btn{width:100%;border:0;background:var(--ink);color:var(--bg);padding:.85rem;font:600 13px/1 "IBM Plex Sans",sans-serif;cursor:pointer}
+.btn:hover{opacity:.92}
+.trust{margin:.85rem 0 0;font-size:.75rem;color:var(--mute);line-height:1.45}
+.trust b{color:var(--ink);font-weight:600}
+.aside-list{margin:0;padding:0;list-style:none;display:grid;gap:.7rem}
+.aside-list li{padding:.75rem .85rem;background:var(--panel2);border:1px solid var(--rule)}
+.aside-list strong{display:block;font-size:.88rem;margin:0 0 .2rem}
+.aside-list span{font-size:.8rem;color:var(--mute)}
+.fix{color:var(--brass);font-family:"IBM Plex Mono",monospace;font-size:.68rem;display:block;margin-bottom:.25rem}
+/* email */
+.mail{background:var(--paper)}
+.inbox-bar{padding:.7rem .9rem;border-bottom:1px solid var(--rule);background:var(--panel2);font-size:.78rem}
+.inbox-bar .from{color:var(--mute)}
+.inbox-bar .subj{font-weight:600;margin-top:.15rem}
+.letter{padding:1.25rem 1.1rem 1.5rem}
+.mast{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:.55rem;margin-bottom:1rem}
+.mast .n{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.mast .d{font-size:.72rem;color:var(--mute);font-family:"IBM Plex Mono",monospace}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--brass);letter-spacing:.08em;margin:0 0 .45rem}
+.letter h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.55rem;line-height:1.15;font-weight:600;margin:0 0 .55rem}
+.letter .dek{margin:0 0 1rem;color:var(--mute);font-size:.9rem}
+.numbox{border:1px solid var(--rule);background:var(--panel2);padding:1rem .95rem;margin:0 0 1rem}
+.numbox .lab{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--mute);letter-spacing:.1em;text-transform:uppercase;margin:0 0 .4rem}
+.numbox .big{font-family:"Cormorant Garamond",Georgia,serif;font-size:2.55rem;line-height:1;font-weight:600;letter-spacing:-.02em}
+.numbox .meta{margin-top:.45rem;font-size:.8rem;color:var(--mute)}
+.numbox .meta b{color:var(--ink)}
+.pull{border-left:2px solid var(--ink);padding:.1rem 0 .1rem .85rem;margin:0 0 .95rem}
+.pull p{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.08rem;line-height:1.4;font-weight:500}
+.letter h4{margin:0 0 .35rem;font-size:.95rem}
+.letter p{margin:0 0 .75rem;font-size:.9rem}
+.cta{display:block;text-align:center;text-decoration:none;background:var(--ink);color:var(--bg)!important;padding:.8rem;font:600 12.5px/1 "IBM Plex Sans",sans-serif;margin:.2rem 0 1.1rem}
+.sign{font-size:.9rem}
+.foot{margin-top:1.1rem;padding-top:.75rem;border-top:1px solid var(--rule);font-size:.7rem;color:var(--mute)}
+.foot a{color:var(--mute)}
+/* before after */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+@media (max-width:720px){.compare{grid-template-columns:1fr}}
+.bad,.good{padding:.9rem 1rem;border:1px solid var(--rule);min-height:100%}
+.bad{background:#f5e8e4}
+.good{background:var(--panel2)}
+[data-theme=dark] .bad{background:#2a1c18}
+.bad h3,.good h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.15rem;margin:0 0 .5rem}
+.bad ul,.good ul{margin:0;padding-left:1.05rem;font-size:.86rem}
+.bad li,.good li{margin:.3rem 0}
+.checklist{display:grid;gap:.55rem;margin:1rem 0 0}
+.checklist div{display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-items:start;padding:.7rem .8rem;border:1px solid var(--rule);background:var(--panel)}
+.tick{width:1.15rem;height:1.15rem;border:1px solid var(--ink);display:grid;place-items:center;font-size:.7rem;margin-top:.1rem}
+.tick.on{background:var(--ink);color:var(--bg)}
+.note{margin:1.25rem 0 0;font-size:.8rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div>Pricegraphy · The Weekly Bar · 设计定稿（示意，未改线上 beehiiv）</div>
+    <button class="theme" type="button" id="themeBtn" aria-label="切换明暗">明 / 暗</button>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">Subscribe product · 2026-10-28</div>
+    <h1>订阅链做成产品，而不是外挂按钮。</h1>
+    <p class="lede">一次填表、全程 The Weekly Bar、打开就是「一个数字 + 一句论证」。下面三屏是目标态：站内订阅、收信打开、问题对照。</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="视图">
+    <button class="tab" role="tab" aria-selected="true" data-tab="sub" type="button">1 · 站内订阅</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="mail" type="button">2 · 打开邮件</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="fix" type="button">3 · 问题怎么修</button>
+  </div>
+
+  <section class="panel is-on" id="panel-sub" role="tabpanel">
+    <div class="grid">
+      <div class="card">
+        <h2>目标：一页完成，不跳陌生刊名</h2>
+        <p class="hint">邮箱只填一次。成功态留在 Pricegraphy 品牌里；后台仍可走 beehiiv，用户看不见 “R's Newsletter”。</p>
+        <div class="device">
+          <div class="device-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span> pricegraphy.com/newsletter</div>
+          <div class="screen sub-page">
+            <div class="sub-brand"><span>The Weekly Bar</span><span>Pricegraphy</span></div>
+            <h3>One gold price, taken apart.</h3>
+            <p class="pitch">Every Tuesday: one number, one argument. Free. Unsubscribe in one click.</p>
+            <div class="field">
+              <label for="em">Email</label>
+              <input id="em" type="email" placeholder="you@example.com" autocomplete="email"/>
+            </div>
+            <button class="btn" type="button" id="signupBtn">Sign up</button>
+            <p class="trust" id="trustLine"><b>From Pricegraphy.</b> Confirmation goes to your inbox. We never sell your address. Physical mailing address on file for CAN-SPAM.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>这一屏修掉什么</h2>
+        <ul class="aside-list">
+          <li><span class="fix">FIX 01</span><strong>品牌不断裂</strong><span>刊名、发件域、按钮文案全程 The Weekly Bar / Pricegraphy。</span></li>
+          <li><span class="fix">FIX 02</span><strong>一表单</strong><span>站内提交即订阅（API / embed），不再新开默认 beehiiv 皮。</span></li>
+          <li><span class="fix">FIX 03</span><strong>信任可见</strong><span>发件身份、退订、地址承诺写在按钮下，不藏隐私页。</span></li>
+          <li><span class="fix">FIX 04</span><strong>成功有下文</strong><span>提交后改文案：查收确认信 / 下期周二见——而不是静默跳走。</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-mail" role="tabpanel">
+    <div class="grid">
+      <div class="card">
+        <h2>场景：金价破 $4,500</h2>
+        <p class="hint">收件箱先看主题与预览文；点开后四级节奏：刊头 → 数字块 → 论证 → 单一行动。</p>
+        <div class="device">
+          <div class="device-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Mail · The Weekly Bar</div>
+          <div class="screen mail">
+            <div class="inbox-bar">
+              <div class="from">The Weekly Bar &lt;hello@pricegraphy.com&gt;</div>
+              <div class="subj">Gold broke $4,500. Your sticker didn’t.</div>
+              <div class="from" style="margin-top:.15rem">Spot $4,512 · Costco-style sticker +6.3% premium</div>
+            </div>
+            <div class="letter">
+              <div class="mast"><span class="n">The Weekly Bar</span><span class="d">Tue · Oct 28</span></div>
+              <div class="kicker">This week’s number</div>
+              <h3>Spot crossed four-five. Retail still sells you packaging.</h3>
+              <p class="dek">One real sticker, taken apart — spot, premium, what you actually pay.</p>
+              <div class="numbox">
+                <div class="lab">Spot · illustrative</div>
+                <div class="big">$4,512</div>
+                <div class="meta">Week <b>+2.1%</b> · 1 oz sticker <b>$4,798</b> → premium <b>+6.3%</b></div>
+              </div>
+              <div class="pull"><p>The headline is the break. The bill is the premium. A 1 g bar “to catch the move” often costs more per gram than waiting for 1 oz.</p></div>
+              <h4>What to do with the number</h4>
+              <p>Same day, three stickers: 1 g / 10 g / 1 oz. Divide by weight, subtract spot, read the premium. That is the price that moved for you.</p>
+              <a class="cta" href="https://pricegraphy.com/tools/gold-premium-calculator/">Open the premium calculator</a>
+              <p class="sign">See what the price hides,<br><b>Pricegraphy</b></p>
+              <div class="foot">You’re getting The Weekly Bar from Pricegraphy.<br>
+                <a href="https://pricegraphy.com/newsletter/">Read online</a> · Unsubscribe · Pricegraphy, mailing address on file</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>信里必须有的四样</h2>
+        <ul class="aside-list">
+          <li><span class="fix">SUBJECT</span><strong>钩子在破位，落点在贴纸</strong><span>不写 “Issue #12”。预览文直接给溢价数字。</span></li>
+          <li><span class="fix">NUMBER</span><strong>一个可转发的数字块</strong><span>spot + 贴纸价 + 溢价%。截图就能发社媒。</span></li>
+          <li><span class="fix">ARGUMENT</span><strong>≤120 字论证</strong><span>不荐股、不喊多空；解释标签为什么骗人。</span></li>
+          <li><span class="fix">CTA</span><strong>只留一个动作</strong><span>溢价计算器。不塞 Shop now 购物模板。</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-fix" role="tabpanel">
+    <div class="card" style="margin-bottom:1rem">
+      <h2>对照：现在 vs 定稿</h2>
+      <p class="hint">左边是线上真实问题；右边是这页定的标准。</p>
+      <div class="compare">
+        <div class="bad">
+          <h3>现在</h3>
+          <ul>
+            <li>跳到 R's Newsletter + 灰车图</li>
+            <li>站内填完还要再点一次</li>
+            <li>无发出刊；草稿是购物模板</li>
+            <li>发件名 / 地址空</li>
+            <li>DOI 关着，信任文案与事实不符</li>
+          </ul>
+        </div>
+        <div class="good">
+          <h3>定稿</h3>
+          <ul>
+            <li>全程 The Weekly Bar 视觉</li>
+            <li>一表单提交（API）</li>
+            <li>有可发样刊：数字块 + 论证</li>
+            <li>From: hello@pricegraphy.com + 页脚地址</li>
+            <li>开 DOI 或改文案二选一，保持一致</li>
+          </ul>
+        </div>
+      </div>
+      <div class="checklist">
+        <div><div class="tick">1</div><div><strong>改 beehiiv 刊名 / Logo / 发件名</strong><br><span style="color:var(--mute);font-size:.85rem">免费计划若锁设置，后台手改或升级。</span></div></div>
+        <div><div class="tick">2</div><div><strong>站内改 API 订阅，去掉跳转默认皮</strong><br><span style="color:var(--mute);font-size:.85rem">表单仍在 pricegraphy.com，成功态本页完成。</span></div></div>
+        <div><div class="tick">3</div><div><strong>按本页「打开邮件」重写第一期草稿</strong><br><span style="color:var(--mute);font-size:.85rem">删掉 Editor's Picks；发测试到自己邮箱验打开态。</span></div></div>
+        <div><div class="tick">4</div><div><strong>页脚实体地址 + 发件身份对齐隐私页</strong><br><span style="color:var(--mute);font-size:.85rem">合规与送达率同一件事。</span></div></div>
+      </div>
+    </div>
+    <p class="note">数字为场景示意，非实时行情。本页是体验定稿，尚未写入 beehiiv / 站点代码。</p>
+  </section>
+</div>
+<script>
+(function(){
+  const root=document.documentElement;
+  const btn=document.getElementById('themeBtn');
+  const hour=new Date().getHours();
+  const saved=localStorage.getItem('wb-theme');
+  const initial=saved||((hour>=7&&hour<19)?'light':'dark');
+  root.setAttribute('data-theme',initial);
+  btn.addEventListener('click',()=>{
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('wb-theme',next);
+  });
+  document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected','false'));
+      tab.setAttribute('aria-selected','true');
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('is-on'));
+      document.getElementById('panel-'+tab.dataset.tab).classList.add('is-on');
+    });
+  });
+  const em=document.getElementById('em');
+  const signup=document.getElementById('signupBtn');
+  const trust=document.getElementById('trustLine');
+  signup.addEventListener('click',()=>{
+    const v=(em.value||'').trim();
+    if(!v||!v.includes('@')){em.focus();trust.innerHTML='<b>需要有效邮箱。</b>再试一次。';return;}
+    signup.textContent='You’re in';
+    signup.disabled=true;
+    trust.innerHTML='<b>Check your inbox.</b> Next issue Tuesday. Same brand — no R’s Newsletter.';
+  });
+})();
+</script>
+</body>
+</html>
