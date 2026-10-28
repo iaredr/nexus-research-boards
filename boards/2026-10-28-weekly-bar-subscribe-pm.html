@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Weekly Bar · 订阅产品分析（PM）</title>
+<meta name="description" content="Pricegraphy 订阅是产品问题：场景地图、买金/卖金钩子、开信后漏斗、竞品调性结论。浅色纸感分析板。"/>
+<meta property="og:title" content="The Weekly Bar · 订阅产品分析"/>
+<meta property="og:description" content="不同触点不同钩子；欢迎信是漏斗第一封，不是确认收据。"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root,[data-theme=light]{
+  --bg:#e6dcc3;--paper:#fffdf8;--panel:#f7f2e7;--panel2:#efe8da;
+  --ink:#121212;--mute:#5c574e;--rule:#cfc4a8;--brass:#a07a2c;
+  --shadow:0 1px 0 rgba(18,18,18,.04),0 14px 36px rgba(18,18,18,.07);
+}
+[data-theme=dark]{
+  --bg:#1a1713;--paper:#221e18;--panel:#2a241c;--panel2:#322b22;
+  --ink:#ebe4d6;--mute:#a39a8c;--rule:#4a4236;--brass:#c4a45a;
+  --shadow:0 1px 0 rgba(255,255,255,.04),0 14px 36px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Libre Franklin",system-ui,sans-serif;font-size:15px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;z-index:0;
+  background-image:radial-gradient(var(--rule) .6px,transparent .7px);background-size:14px 14px}
+.wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:1rem 1.15rem 4.5rem}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem;font-size:.78rem;color:var(--mute)}
+.theme{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:.4rem .75rem;cursor:pointer}
+.theme:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.hero{background:var(--paper);border:1px solid var(--rule);box-shadow:var(--shadow);padding:1.6rem 1.5rem 1.4rem;margin-bottom:1.25rem}
+.hero .meta{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--brass);margin:0 0 .55rem}
+h1{font-family:"Libre Caslon Display",Georgia,serif;font-weight:400;font-size:clamp(2rem,4.5vw,2.85rem);line-height:1.08;margin:0 0 .65rem;max-width:18ch;letter-spacing:-.01em}
+.lede{margin:0;color:var(--mute);max-width:58ch;font-size:1.02rem}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.1rem 0 0;padding:0;list-style:none}
+.toc a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--rule);padding:.35rem .7rem;font-size:.78rem}
+.toc a:hover{border-color:var(--ink)}
+.sec{background:var(--paper);border:1px solid var(--rule);box-shadow:var(--shadow);padding:1.35rem 1.4rem 1.45rem;margin:0 0 1.1rem}
+.sec h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.45rem;font-weight:600;margin:0 0 .35rem;line-height:1.25}
+.sec .sub{margin:0 0 1rem;color:var(--mute);font-size:.92rem;max-width:62ch}
+h3{font-family:"Source Serif 4",Georgia,serif;font-size:1.08rem;font-weight:600;margin:1.15rem 0 .45rem}
+p{margin:0 0 .75rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+@media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);padding:.9rem 1rem}
+.card h4{margin:0 0 .35rem;font-size:.95rem;font-family:"Source Serif 4",Georgia,serif;font-weight:600}
+.card p,.card li{font-size:.88rem;color:var(--mute)}
+.card ul{margin:.35rem 0 0;padding-left:1.05rem}
+.card li{margin:.25rem 0}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--brass);margin-bottom:.35rem}
+table.map{width:100%;border-collapse:collapse;font-size:.86rem}
+table.map th,table.map td{border:1px solid var(--rule);padding:.65rem .7rem;vertical-align:top;text-align:left}
+table.map th{background:var(--panel2);font-weight:600;font-size:.78rem}
+table.map td strong{color:var(--ink);font-weight:600}
+table.map .intent{color:var(--mute);font-size:.82rem}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+@media (max-width:820px){.vs{grid-template-columns:1fr}}
+.buy{background:#f3eee4;border:1px solid var(--rule);padding:1rem 1.05rem}
+.sell{background:#f0ebe3;border:1px solid var(--rule);padding:1rem 1.05rem}
+[data-theme=dark] .buy,[data-theme=dark] .sell{background:var(--panel2)}
+.buy h3,.sell h3{margin-top:0}
+.subj{font-family:"IBM Plex Mono",monospace;font-size:.78rem;background:var(--paper);border:1px solid var(--rule);padding:.45rem .55rem;margin:.35rem 0;color:var(--ink)}
+.funnel{display:grid;gap:.55rem}
+.funnel .step{display:grid;grid-template-columns:5.5rem 1fr;gap:.75rem;padding:.8rem .85rem;border:1px solid var(--rule);background:var(--panel)}
+.funnel .when{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--brass);padding-top:.15rem}
+.funnel strong{display:block;margin-bottom:.2rem}
+.funnel span{font-size:.86rem;color:var(--mute)}
+.comp{display:grid;gap:.65rem}
+.comp .row{display:grid;grid-template-columns:7.5rem 1fr;gap:.7rem;padding:.75rem .85rem;border-bottom:1px solid var(--rule)}
+@media (max-width:640px){.comp .row{grid-template-columns:1fr}}
+.comp .who{font-weight:600;font-size:.88rem}
+.comp .what{font-size:.86rem;color:var(--mute)}
+.callout{border-left:3px solid var(--brass);padding:.15rem 0 .15rem .9rem;margin:0 0 1rem}
+.callout p{margin:0;font-family:"Source Serif 4",Georgia,serif;font-size:1.05rem;line-height:1.45}
+.module{background:var(--panel);border:1px solid var(--rule);padding:1.1rem 1.15rem}
+.module .brand{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.08em;color:var(--mute);margin:0 0 .7rem;display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:.45rem}
+.module h4{font-family:"Libre Caslon Display",Georgia,serif;font-weight:400;font-size:1.45rem;margin:0 0 .4rem;line-height:1.15}
+.module .pitch{margin:0 0 .85rem;color:var(--mute);font-size:.9rem}
+.field{display:grid;gap:.3rem;margin:0 0 .65rem}
+.field label{font-size:.7rem;color:var(--mute);font-family:"IBM Plex Mono",monospace}
+.field input{border:1px solid var(--rule);background:var(--paper);color:var(--ink);padding:.65rem .7rem;font:inherit}
+.btn{border:0;background:var(--ink);color:var(--bg);padding:.75rem;font:600 13px/1 "Libre Franklin",sans-serif;cursor:default;width:100%;text-align:center}
+.trust{margin:.7rem 0 0;font-size:.75rem;color:var(--mute)}
+.mail-link{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--rule);padding:1rem 1.1rem;margin-top:.5rem}
+.mail-link:hover{border-color:var(--ink)}
+.mail-link .t{font-family:"Source Serif 4",Georgia,serif;font-size:1.1rem;font-weight:600;margin:0 0 .25rem}
+.mail-link .d{margin:0;font-size:.88rem;color:var(--mute)}
+.note{margin:1rem 0 0;font-size:.8rem;color:var(--mute)}
+.concl{margin:0;padding-left:1.1rem}
+.concl li{margin:.45rem 0;max-width:68ch}
+.learn{color:var(--brass);font-weight:600}
+.avoid{color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div>Pricegraphy · The Weekly Bar · PM 分析板（研究稿，未改线上 beehiiv / 站点）</div>
+    <button class="theme" type="button" id="themeBtn" aria-label="切换明暗">切换暗色</button>
+  </div>
+
+  <header class="hero">
+    <p class="meta">Product brief · 2026-10-28 · 默认浅色纸感（上一版夜间自动变黑已被否）</p>
+    <h1>订阅是产品，不是页脚装饰。</h1>
+    <p class="lede">用户在不同页面带着不同意图停下。买金怕溢价吃亏，卖金怕被压价——钩子、承诺、开信后第一封，必须拆开设计。下面是调研结论 + 场景地图 + 漏斗；邮件以最好形态另开一页。</p>
+    <ul class="toc">
+      <li><a href="#competitors">竞品调性</a></li>
+      <li><a href="#map">场景地图</a></li>
+      <li><a href="#buy-sell">买金 vs 卖金</a></li>
+      <li><a href="#funnel">开信漏斗</a></li>
+      <li><a href="#tone">调性结论</a></li>
+      <li><a href="#modules">情境模块示意</a></li>
+      <li><a href="#email">Day-0 邮件</a></li>
+    </ul>
+  </header>
+
+  <section class="sec" id="competitors">
+    <h2>竞品调性：人家订阅怎么做</h2>
+    <p class="sub">抽样打开/核实过公开订阅页与欢迎信描述（Morning Brew、The Hustle、Axios、Lenny、Stratechery；Kitco、Goldprice、JM Bullion/APMEX；Seeking Alpha）。记录的是可复用的产品规律，不是视觉抄袭清单。</p>
+
+    <div class="callout"><p>能转化的订阅页几乎都在做同一件事：用<strong>当下意图</strong>换邮箱，用<strong>开信后立刻有用</strong>换第二周打开——而不是用「深色仪表盘」证明专业。</p></div>
+
+    <div class="comp">
+      <div class="row">
+        <div class="who">Morning Brew</div>
+        <div class="what">浅色 squeeze：社会证明标题（4M+）+ 一句日常承诺 + 单邮箱 + Subscribe for free。欢迎信短、口语、「You’re in」，立刻把人导向其他刊/播客。表单极简；价值主张是时间（早上 5 分钟），不是数据墙。</div>
+      </div>
+      <div class="row">
+        <div class="who">The Hustle</div>
+        <div class="what">浅色、语气鲜明（business as unusual）。卖的是「不无聊的商业阅读」人格，不是功能列表。欢迎信延续同一种声音，并做交叉推荐。</div>
+      </div>
+      <div class="row">
+        <div class="who">Axios</div>
+        <div class="what">白底编辑感 + 蓝 CTA。按产品线分刊（AM/PM/Markets），让用户勾选场景，而不是一个笼统「订阅我们」。Smart Brevity：承诺可读时长。站内横幅与邮件结构同构。</div>
+      </div>
+      <div class="row">
+        <div class="who">Lenny / Stratechery</div>
+        <div class="what">浅色编辑页。Lenny 卖结果与生态（社区/工具包）；Stratechery 卖分析密度与交付偏好。都不是「黑金行情终端」气质——付费分析也用纸感/清晰排版。</div>
+      </div>
+      <div class="row">
+        <div class="who">Kitco</div>
+        <div class="what">贵金属媒体：多产品分层（Daily Recap / Weekly Rundown / Front Burner / 交易信号）。钩子是「市场发生了什么」，频率可勾选。偏新闻台，不是溢价教育。</div>
+      </div>
+      <div class="row">
+        <div class="who">Goldprice.org</div>
+        <div class="what">工具站：图表/计算器主导，订阅不是产品中心；导流买金经销商。情境 CTA 弱，几乎全是「看价 → 买」。Pricegraphy 若学它，会丢掉「解释价格」差异化。</div>
+      </div>
+      <div class="row">
+        <div class="who">APMEX / JM Bullion</div>
+        <div class="what">邮件 = 促销与会员（Bullion Club、flash sale、new customer offer）。钩子是折扣与抢购。双 opt-in/确认页存在。这是<strong>卖货 CRM</strong>，不是周刊产品——可学「成交后自动入列」，不可学「每周五封促单」。</div>
+      </div>
+      <div class="row">
+        <div class="who">Seeking Alpha / Fool</div>
+        <div class="what">金融媒体：Wall Street Breakfast 类用「开盘前一页纸」+ 读者证言；Fool 用业绩证明与紧迫感推付费。钩子是「别错过市场」，恐惧/贪婪并重。</div>
+      </div>
+    </div>
+
+    <h3>可抄的产品规律（不是皮肤）</h3>
+    <div class="grid3">
+      <div class="card"><span class="tag">FORM</span><h4>一栏邮箱</h4><p>证明与承诺写在按钮上下，不塞第二步陌生落地页。</p></div>
+      <div class="card"><span class="tag">PROOF</span><h4>社会证明或样刊</h4><p>人没有 4M 时，用「打开后长什么样」预览代替虚荣数字。</p></div>
+      <div class="card"><span class="tag">DAY 0</span><h4>欢迎 ≠ 收据</h4><p>确认订阅 + 立刻给价值 + 2–3 条关联推荐；再交代节奏。</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="map">
+    <h2>场景地图：触点不同，钩子必须不同</h2>
+    <p class="sub">Pricegraphy 不是单一「订阅页产品」。用户从工具、指南、破位话题进来时，大脑里的问题已经写好了——CTA 要接住那个问题，并诚实承诺频率。</p>
+
+    <table class="map">
+      <thead>
+        <tr>
+          <th style="width:18%">触点</th>
+          <th style="width:22%">当下意图</th>
+          <th style="width:32%">钩子文案方向</th>
+          <th style="width:28%">承诺（频率 / 内容）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>首页 / 顶栏 Subscribe</strong></td>
+          <td class="intent">品牌扫描；还没具体任务</td>
+          <td>One gold price, taken apart. 周二一封：一个数字 + 一句论证。</td>
+          <td>每周二 · The Weekly Bar · 免费 · 一键退订</td>
+        </tr>
+        <tr>
+          <td><strong>全局 footer</strong></td>
+          <td class="intent">读完或离开前的低意愿收集</td>
+          <td>极短：Get Tuesday’s number. 不抢文章 CTA。</td>
+          <td>同周刊；不另开「警报日刊」除非另产品</td>
+        </tr>
+        <tr>
+          <td><strong>溢价工具用完后</strong><br/><span class="intent">/tools/gold-premium-calculator/</span></td>
+          <td class="intent">刚算完溢价；想验证自己有没有被坑</td>
+          <td>You just priced the sticker. Get next week’s premium read — one number, no inventory pitch.</td>
+          <td>周刊 + Day-0 立刻给「怎么读贴纸」短文；主 CTA 仍回工具</td>
+        </tr>
+        <tr>
+          <td><strong>熔值计算器后</strong><br/><span class="intent">/tools/gold-melt-value-calculator/</span></td>
+          <td class="intent">在估变现；焦虑被压价</td>
+          <td>Melt is the floor. We’ll show you how buyers talk about the rest — Tuesdays.</td>
+          <td>周刊里穿插卖金教育；推荐链向 /selling-gold/</td>
+        </tr>
+        <tr>
+          <td><strong>买金指南文末</strong><br/><span class="intent">/buying-gold/ · Costco 等 issue</span></td>
+          <td class="intent">准备下手或比价；怕溢价/假货叙事</td>
+          <td>Before you pay the premium, get one honest sticker teardown a week.</td>
+          <td>周刊偏「标签拆解」；不发 dealer coupon</td>
+        </tr>
+        <tr>
+          <td><strong>卖金指南文末</strong><br/><span class="intent">/selling-gold/ · buyback issue</span></td>
+          <td class="intent">要套现；怕开口价太低、税/手续费</td>
+          <td>Know the melt before you hear their offer. Weekly math, not pawn-shop scripts.</td>
+          <td>同刊名，钩子与推荐换成卖金路径</td>
+        </tr>
+        <tr>
+          <td><strong>价格突破 / 警报意图</strong><br/><span class="intent">破 $4,000 / $4,500 类话题</span></td>
+          <td class="intent">FOMO 或「要不要追」；时间敏感</td>
+          <td>Spot broke the round number. Your sticker didn’t — here’s the premium that still moved.</td>
+          <td>可插一封事件短讯；默认仍周更，避免变成 Kitco 日刊</td>
+        </tr>
+        <tr>
+          <td><strong>对比 / dealer 语境页</strong></td>
+          <td class="intent">在两家之间纠结价差</td>
+          <td>Same ounce, different premiums. We’ll keep teaching the spread — not the SKU.</td>
+          <td>周刊；推荐 Premium 工具与 Costco 案例</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">技术上可以只有一个 beehiiv 列表；产品上要用 UTM / hidden field / 文案变体记录「从哪类场景进来」，否则 Day-0 无法个性化推荐。</p>
+  </section>
+
+  <section class="sec" id="buy-sell">
+    <h2>买金 vs 卖金：为什么钩子必须拆开</h2>
+    <p class="sub">同一邮箱列表，两种心理账户。混用「别错过金价」会同时得罪两边：买家觉得你在催单，卖家觉得你在喊多。</p>
+
+    <div class="vs">
+      <div class="buy">
+        <h3>买金场景</h3>
+        <p><strong>动机</strong>：配置、抗通胀叙事、礼物/纪念、觉得「要涨了」。</p>
+        <p><strong>主导情绪</strong>：贪婪（怕踏空）+ 被宰恐惧（溢价、假货、小克重陷阱）。</p>
+        <p><strong>时间敏感度</strong>：中高——现货破位时升高，但溢价教育可周更消化。</p>
+        <p><strong>信任证明</strong>：拆解真实贴纸（Costco 案例）、声明不卖金、溢价公式可复算。</p>
+        <p><strong>邮件主题行示例</strong></p>
+        <div class="subj">Gold broke $4,500. Your sticker didn’t.</div>
+        <div class="subj">That “cheap” 1g bar costs more per gram.</div>
+        <div class="subj">Costco gold: membership fee inside the premium.</div>
+      </div>
+      <div class="sell">
+        <h3>卖金 / 套现场景</h3>
+        <p><strong>动机</strong>：周转现金、清理首饰、继承变现、不想再存。</p>
+        <p><strong>主导情绪</strong>：被压价恐惧 + 信息差羞耻（「是不是傻了」）+ 对税/手续费不确定。</p>
+        <p><strong>时间敏感度</strong>：高且具体——往往已拿着东西或约了店；要立刻给「熔值地板」。</p>
+        <p><strong>信任证明</strong>：熔值计算器、回收折扣百分比解释、税指南；语气冷静，不煽动「再等等会更高」。</p>
+        <p><strong>邮件主题行示例</strong></p>
+        <div class="subj">Melt is the floor. Their first offer isn’t.</div>
+        <div class="subj">14k necklace: what buyers actually pay.</div>
+        <div class="subj">Before you say yes: scrap % of melt, explained.</div>
+      </div>
+    </div>
+
+    <h3>产品含义（写进 backlog）</h3>
+    <div class="grid2">
+      <div class="card"><h4>文案变体 ≥ 2</h4><p>买金指南 / 卖金指南文末模块各一套 headline + pitch + 推荐深链；不要共用「Subscribe for gold news」。</p></div>
+      <div class="card"><h4>Day-0 推荐分轨</h4><p>来自 premium 工具 → 买金指南 + Costco issue；来自 melt 工具 → buyback issue + scrap % 指南 + selling hub。</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="funnel">
+    <h2>订阅后邮件营销漏斗（不只一封）</h2>
+    <p class="sub">欢迎信是漏斗入口：确认身份、立刻交付价值、用关联内容换第一次点击——再交给周刊习惯。系统暂时做不到自动化时，也先按这个「最好形态」写稿。</p>
+
+    <div class="funnel">
+      <div class="step">
+        <div class="when">Day 0<br/>即时</div>
+        <div>
+          <strong>Welcome + 价值 + 推荐</strong>
+          <span>目的：确认订阅原因、给一篇可立刻用的洞察、2–3 条情境深链、说明周二节奏。<br/>
+          成功指标：送达率、开信率、至少 1 次站内点击、把发件人移出推广箱（可文案引导）。</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Day 2–4<br/>可选</div>
+        <div>
+          <strong>建立价值（短）</strong>
+          <span>目的：若 Day0 未点击，补一条与来源场景同主题的指南（仍非促销）。<br/>
+          成功指标：补救点击率；未开信用户不要连轰。</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">首个周二</div>
+        <div>
+          <strong>第一期 The Weekly Bar</strong>
+          <span>目的：兑现「一个数字 + 一句论证」；单一主 CTA（工具或当期 issue）。<br/>
+          成功指标：开信、主 CTA 点击、退订率低于行业噪音。</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">之后每周</div>
+        <div>
+          <strong>周刊习惯</strong>
+          <span>目的：可预期的编辑关系。破位时可插一封事件信，但默认周更，避免滑向 dealer CRM 频率。<br/>
+          成功指标：4 周内 ≥1 次打开的留存；点击到工具的占比。</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Day-0 内容骨架（已落地到独立 HTML）</h3>
+    <div class="grid2">
+      <div class="card">
+        <h4>必须有</h4>
+        <ul>
+          <li>From / Subject / Preheader（收件箱层）</li>
+          <li>确认：为何会收到这封</li>
+          <li>核心洞察块（英文正文，可转发）</li>
+          <li>「接下来你会收到」节奏清单</li>
+          <li>推荐 2–3：真实站内路径</li>
+          <li>页脚：地址占位、退订、偏好</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>刻意没有</h4>
+        <ul>
+          <li>Dealer 商品格 / Editor’s Picks 购物墙</li>
+          <li>「限时 10%」类促销主 CTA</li>
+          <li>多个同等重量按钮抢点击</li>
+          <li>空洞 Thank you for subscribing 空壳</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="tone">
+    <h2>调性结论：学谁、不学谁</h2>
+    <p class="sub">Pricegraphy 的站内已经是奶油纸 + 近黑字 + 金色点缀的编辑报。周刊是「邮件里的一期报」，不是「第二个行情终端」。</p>
+
+    <ul class="concl">
+      <li><span class="learn">学 Morning Brew / Axios 的结构纪律：</span>一屏说清承诺、单字段、开信后立刻有用；用可读时长与样例建立信任。</li>
+      <li><span class="learn">学 Lenny/Stratechery 的编辑自尊：</span>浅色、字体层级清楚、卖的是论证密度——与「See what the price hides」一致。</li>
+      <li><span class="avoid">不学 APMEX/JM 的邮件频率与促销钩子：</span>他们优化的是 GMV；我们优化的是「下次买/卖之前先算清楚」。学他们的自动入列可以，学闪购文案不行。</li>
+      <li><span class="avoid">不学 Goldprice 把订阅当附属：</span>工具站可以靠流量分销；Pricegraphy 的差异化就是解释层，周刊应是主产品之一。</li>
+      <li><span class="avoid">不学黑金仪表盘当订阅壳：</span>夜间自动变黑的「专业感」与收件箱里的浅色邮件断裂，也与用户已否的反馈一致。默认浅色纸感，暗色仅手动。</li>
+    </ul>
+  </section>
+
+  <section class="sec" id="modules">
+    <h2>站内情境订阅模块（浅色示意）</h2>
+    <p class="sub">同一组件骨架，文案与深链按买/卖分轨。不是黑仪表盘；是文章流里的纸卡。</p>
+
+    <div class="grid2">
+      <div class="module">
+        <div class="brand"><span>文末 · 买金指南后</span><span>The Weekly Bar</span></div>
+        <h4>Before you pay the premium</h4>
+        <p class="pitch">周二一封：把贴纸拆成 spot + premium。我们不卖金，只把算术写清楚。</p>
+        <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" readonly/></div>
+        <div class="btn">Get the Tuesday teardown</div>
+        <p class="trust">Free · Next: how to read a sticker · <a href="https://pricegraphy.com/tools/gold-premium-calculator/" style="color:inherit">Premium tool</a></p>
+      </div>
+      <div class="module">
+        <div class="brand"><span>文末 · 卖金指南后</span><span>The Weekly Bar</span></div>
+        <h4>Know the melt before their offer</h4>
+        <p class="pitch">买家开口之前，你该先有地板价。周更数学，不是当铺话术。</p>
+        <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" readonly/></div>
+        <div class="btn">Send me the melt math</div>
+        <p class="trust">Free · Next: scrap % of melt · <a href="https://pricegraphy.com/tools/gold-melt-value-calculator/" style="color:inherit">Melt calculator</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="email">
+    <h2>Day-0 欢迎信（最好形态 HTML）</h2>
+    <p class="sub">场景设定：用户刚从「溢价对比工具」订阅。正文英文（面向站点读者）；结构含欢迎 + 洞察 + 节奏 + 关联推荐。Table 布局、inline CSS、600px，本地可双击打开。</p>
+    <a class="mail-link" href="emails/weekly-bar-welcome-day0.html">
+      <p class="t">打开 weekly-bar-welcome-day0.html →</p>
+      <p class="d">Subject: You’re in. Here’s how to read a gold sticker. · 含收件箱外壳预览 · 推荐链至 premium 含义指南 / Costco issue / melt 计算器</p>
+    </a>
+    <p class="note">数字为教学示意，非实时行情。本板与邮件稿均未写入 beehiiv 或 visualchart 生产代码。</p>
+  </section>
+
+  <section class="sec">
+    <h2>五条核心产品结论</h2>
+    <ol class="concl">
+      <li>触点决定钩子：工具后、买金文末、卖金文末、破位页不能共用一句「Subscribe」。</li>
+      <li>买金卖恐惧溢价与踏空；卖金卖恐惧压价与信息差——主题行与 Day-0 推荐必须分轨。</li>
+      <li>Day-0 是营销第一封：确认 + 即时价值 + 关联阅读，不是系统自动回执。</li>
+      <li>周刊默认周更；事件信可插，但频率与文案都要远离 dealer CRM。</li>
+      <li>视觉服从编辑产品：浅色纸感对齐站内与收件箱；近黑整页订阅示意已验证伤害理解。</li>
+    </ol>
+  </section>
+</div>
+<script>
+(function(){
+  var root=document.documentElement;
+  var btn=document.getElementById('themeBtn');
+  // 默认永远浅色；只尊重用户手动选择。不再按时钟自动变黑。
+  var saved=localStorage.getItem('wb-pm-theme');
+  root.setAttribute('data-theme', saved==='dark' ? 'dark' : 'light');
+  btn.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('wb-pm-theme',next);
+  });
+})();
+</script>
+</body>
+</html>
